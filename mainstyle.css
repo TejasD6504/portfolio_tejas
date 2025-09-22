@@ -548,3 +548,8 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #e6c200;
         }
+
+        /* Prevent scrolling */
+body.no-scroll {
+    overflow: hidden;
+}
