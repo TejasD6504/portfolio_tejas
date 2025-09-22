@@ -1,0 +1,592 @@
+*{
+    padding: 0px;
+    margin: 0px; 
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    background-color: black;
+}
+
+#logo{
+    height: 100px;
+width: 200px;
+display: inline-block;
+text-align: left;
+color: orange;
+font-size: 25px;
+padding-top: 5%;
+padding-left: 5%;
+text-decoration: none;
+animation: logo1 1s ease-in;
+}
+
+@keyframes logo1 {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+.fa-solid fa-user{
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+    margin-left: 5%;
+}
+
+#m{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* display:inline; */
+    /* margin-left: 40%; */
+    font-size: 2vw;
+    height: 20vh;
+    width: 100%;
+    animation: m 1s ease-in;
+}
+
+#navcon{
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   gap: 70px;
+   padding-right: 20px;
+}
+
+@keyframes ma {
+    from {
+        transform: translateZ(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateZ(0px);
+        opacity: 1;
+    }
+}
+
+#imgit{
+    height: 50px;
+    width: 50px;
+}
+#imag{
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    margin-left: 2%;
+}
+
+a{
+
+    text-decoration: none;
+    animation: ma 1s ease-in;
+}
+
+p{
+    color : white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#text{
+    height:60%;
+    width:60%;
+    display:inline-block;
+    margin-right: 200px ;
+}
+
+#circle1
+{
+margin-top: 10%;
+    height: 400px;
+    width: 400px;
+    display:inline-block;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: orange;
+    box-shadow: 1px 1px 90px orange;
+    position: relative;
+    right: 5%;
+}
+
+
+
+.backvideo{
+    height: 400px;
+    width: 400px;
+    display:inline-block;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.main{
+    display: flex;
+}
+.home1{
+    margin-top: 10%;
+    height: 100vh;
+    width: 100%;
+    display: inline-block;
+margin-right: 20%;
+padding-left: 5%;
+}
+
+#n{
+    font-size: 100px;
+}
+
+.full{
+    font-size: 50px;
+    animation-name: animatepara;
+    animation-timing-function: 2s;
+}
+#work{
+    color: orange
+}
+
+#Aboutme{
+    margin-top: 300px;
+}
+
+#head{
+    color:white;
+    font-size: 50px;
+   text-decoration: underline;
+   text-decoration-color: orange;
+    text-align: center;
+    
+}
+#circle2
+{
+margin-left: 10%;
+margin-right: 10%;
+    height: 300px;
+    width: 300px;
+    display:inline-block;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: orange;
+    box-shadow: 10px 10px 5000px orange;
+}
+.backvideo2{
+    height: 300px;
+    width: 300px;
+    display:inline-block;
+    border-radius: 50%;
+    background-color: orange;
+    box-shadow: 1px 1px 5000px orange;
+}
+
+
+#mainwrite{
+    margin-top: 5%;
+    color:white;
+    font-size: 30px;
+    padding: 10px;
+    flex-wrap:wrap;
+    height: max-content;
+    width: 100%;
+}
+
+#amboth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 500vh;
+    width: 100%;
+    flex-wrap: wrap;
+    /* background-color: red; */
+}
+
+#skills{
+    margin-top: 300px;
+}
+#skilled{
+    color:white;
+    font-size: 50px;
+   text-decoration: underline;
+   text-decoration-color: orange;
+    text-align: center;
+}
+
+#topic{
+
+    margin-top: 5%;
+    color:white;
+    font-size: 30px;
+}
+
+
+.dashhh{
+    margin-top: 1%;
+    height: 1px;
+    width: 200px;
+    border: solid;
+    border-color: orange;
+}
+
+.fa-brands fa-js{
+font-weight: 500px;
+}
+
+#html{
+    border: solid;
+    border-radius: 20%;
+    border-color: orange;
+}
+
+#skillstypes{
+    display: block;
+    margin-top: 10%;
+}
+
+#tskill
+{
+    text-align: center;
+    height: 120px;
+    width: 750px;
+    display: inline-block;
+    color:white;
+    text-decoration: underline ;
+    text-decoration-color: orange;
+    font-size: 40px;
+    
+}
+
+#oskill
+{
+    text-align: center;
+    height: 120px;
+    width: 750px;
+    display: inline-block;
+    color:white;
+    text-decoration: underline ;
+    text-decoration-color: orange;
+    font-size: 40px;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
+
+#fortej{
+    display: flex;
+    margin-top: 5%;
+}
+.fort{
+    margin-left: 5%;
+    height: 420px;
+    width: 650px;
+    display: inline-block;
+    border: solid;
+    border-color: orange;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+#cpp
+{
+    margin-left: 5%;
+    margin-top: 5%;
+    height:150px;
+    width: 150px;
+    font-size: 25px;
+    display: inline-block;
+    text-align: center;
+}
+#java
+{
+    margin-left: 5%;
+    margin-top: 5%;
+    height:150px;
+    width: 144px;
+    font-size: 25px;
+    display: inline-block;
+    text-align: center;
+}
+#html
+{
+    margin-left: 5%;
+    margin-top: 5%;
+    height:150px;
+    width: 150px;
+    font-size: 25px;
+    display: inline-block;
+    text-align: center;
+    border: none;
+}
+#css
+{
+    margin-left: 5%;
+    margin-top: 5%;
+    height:150px;
+    width: 144px;
+    font-size: 25px;
+    display: inline-block;
+    text-align: center;
+}
+#JavaScript
+{
+    margin-left: 5%;
+    margin-top: 5%;
+    height:150px;
+    width: 150px;
+    font-size: 25px;
+    display: inline-block;
+    text-align: center;
+}
+#Ardiuno
+{
+    margin-left: 5%;
+    margin-top: 5%;
+    height:150px;
+    width: 150px;
+    font-size: 25px;
+    display: inline-block;
+    text-align: center;
+}
+
+.foro{
+    margin-left: 5%;
+    height: 420px;
+    width: 650px;
+    display: inline-block;
+    border: solid;
+    border-color: orange;
+    aspect-ratio: 3/2;
+}
+
+.oneonly
+{
+    margin-left: 5%;
+    margin-top: 5%;
+    height:150px;
+    width: 150px;
+    font-size: 25px;
+    display: inline-block;
+    text-align: center;
+}
+
+#contactme{
+    margin-top: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 60px;
+    height: 100vh;
+    width: 100%;
+}
+
+#contacted{
+    color:white;
+    font-size: 50px;
+   text-decoration: underline;
+   text-decoration-color: orange;
+    text-align: center;
+    font-weight: 900; 
+}
+
+#email{
+   height: 688px;
+    width: 500px;
+    flex-wrap: wrap;
+    border:solid gray;
+    /* border-radius: 5; */
+    padding: 20px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 5%;
+}
+
+#one{
+    margin-top: 3%;
+    margin-left: 3%;
+    color:white;
+    font-size: 25px;
+
+}
+
+.ema{
+  
+    background-color: black;
+    border-radius: 5%;
+   
+}
+
+
+input::placeholder{
+    text-align: left;
+    margin-left: 20%;
+    color: grey;
+    
+}
+input{
+    height: 85px;
+    width: 475px;
+    background-color: black;
+    border:solid grey;
+    border-radius: 10px;  
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+#but{
+    margin-left: 2%;
+    margin-top: 3%;
+    height: 85px;
+    width: 475px;
+}
+
+#button{
+    height: 75px;
+    width: 455px;
+    background-color: orange;
+    color: white;
+   text-align: center;
+   font-size: 25px;
+}
+
+
+
+
+button:hover{
+    box-shadow: 0 0 5px orange,0 0 25px orange,0 0 100px orange,0 0 200px orange;
+}
+
+@keyframes animatepara{
+    from {rotate: x 90deg}
+    to {rotate:x 0deg;}
+}
+
+@keyframes animateparaname{
+    from {rotate: x 90deg;}
+    to {roate:x 0deg;}
+}
+
+#hello{
+    animation-name: animatepara;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-direction: normal;
+}
+
+#n{
+    animation-name: animateparaname;
+    animation-duration: 3s;
+    animation-timing-function: ease-in;
+}
+
+#Iam{
+    animation-name: animatepara;
+    animation-duration: 5s;
+    animation-timing-function: ease-in;
+}
+
+@media screen and (max-width:600px){
+    #logo{
+width: 0px;
+font-size: 20px;
+    }
+    .fa-solid fa-user{
+display: none;
+    }
+    #m{
+        font-size: 18px;
+        margin-left: 30%;
+    }
+
+    #home{
+        height:max-content;
+    }
+    .full{
+        width: 600px;
+
+    }
+    #n{
+        width: 600px;
+        font-size: 88px;
+    }
+
+    #circle1{
+        margin-top: 12%;
+        margin-left: 20%;
+    }
+    .main{
+        display: inline-block;
+    }
+    #imag{
+        margin-top: 12%;
+    
+    }
+
+
+    #circle2{
+margin-left: 30%;
+
+        display: inline-block;
+    }
+    .About{
+        margin-top: 20%;
+        .About{
+
+            height: max-content;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        
+    }
+
+    /* #mainwrite{
+        width:600px;
+    } */
+    .foro{
+        margin-top: 10%;
+       height: max-content;
+    }
+    .fort{
+        margin-top: 10%;
+        height: max-content;
+   }
+
+   #tskill{
+    margin-left: 5%;
+    width: 50%;
+   }
+   #oskill{
+    margin-left: 5%;
+    width:  max-content;
+    align-content: center;
+   }
+
+    #email{
+        margin-left: 20%;
+    }
+
+
+}
+
+a:hover{
+    text-decoration: underline;
+    text-decoration-color: orange ;
+    color: orange;
+}
+
+#foremail{
+    height: 25px;
+    width: 25px;
+}
+
+
+
+}

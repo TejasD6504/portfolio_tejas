@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Section with Staggered Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 200vh;
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        #contactme {
+            background-color: #2a2a2a;
+            padding: 80px 20px;
+            margin-top: 100vh;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #00ff88;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .contact-info {
+            padding: 20px;
+        }
+
+        .contact-form {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #444;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #00ff88;
+            color: #1a1a1a;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-info-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-info-item h3 {
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section id="contactme">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2 class="animate-item">Get in Touch</h2>
+                <p class="animate-item">Let's create something amazing together</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-info-item animate-item">
+                        <h3>Location</h3>
+                        <p>New York City, NY</p>
+                    </div>
+                    <div class="contact-info-item animate-item">
+                        <h3>Email</h3>
+                        <p>hello@example.com</p>
+                    </div>
+                    <div class="contact-info-item animate-item">
+                        <h3>Phone</h3>
+                        <p>+1 (234) 567-8900</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group animate-item">
+                            <input type="text" placeholder="Your Name">
+                        </div>
+                        <div class="form-group animate-item">
+                            <input type="email" placeholder="Your Email">
+                        </div>
+                        <div class="form-group animate-item">
+                            <textarea rows="5" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="animate-item">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Create a timeline for the animations
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#contactme",
+                start: "top 60%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Add animations to the timeline
+        tl.from(".contact-header", {
+            y: -50,
+            opacity: 0,
+            duration: 1
+        })
+        .from(".animate-item", {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2, // Creates a staggered effect
+            ease: "power2.out"
+        }, "-=0.5");
+
+        // Add hover animations
+        const formElements = document.querySelectorAll("input, textarea");
+        formElements.forEach(element => {
+            element.addEventListener("focus", () => {
+                gsap.to(element, {
+                    scale: 1.02,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            element.addEventListener("blur", () => {
+                gsap.to(element, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+    </script>
+</body>
+</html>
