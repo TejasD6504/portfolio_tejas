@@ -1,0 +1,9 @@
+ Host : "smtp.gmail.com",
+    Username : "tejaldeshmukh9507@gmail.com",
+    Password : "Tejas@6504",
+    To : 'tejasdeshmukh320@gmail.com',
+    From : document.getElementById("email1").value,
+    Subject : document.getElementById("subject1").value,
+    Body : "Name : "+document.getElementById("name1").value+ "<br>Email: " + document.getElementById("email1").value+  "Name : "+document.getElementById("name1").value+ "<br>Message: " + document.getElementById("message1").value
+}).then(
+  message => alert("Message sent successfully")
