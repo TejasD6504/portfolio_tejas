@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Tejas Deshmukh, an IT Engineering student passionate about coding, problem-solving, and creating innovative solutions.">
     <title>Tejas Deshmukh - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="mainstyle.css">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+
 </head>
 <body>
  <div id="splash">
@@ -45,9 +48,10 @@
                         <p>Passionate about learning new technologies and creating innovative solutions through code.</p>
                         
                         <div class="social-links">
-                            <a href="https://github.com/TejasD6504" target="_blank" class="social-link">
-                                <i class="fab fa-github"></i>
-                            </a>
+                           <a href="https://github.com/TejasD6504" target="_blank" class="social-link" aria-label="GitHub Profile">
+    <i class="fab fa-github"></i>
+</a>
+
                             <a href="https://www.linkedin.com/in/tejas-deshmukh-24934329a" target="_blank" class="social-link">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -57,7 +61,7 @@
                     <div class="hero-image">
                         <div class="profile-circle">
                             <div class="profile-img">
-                                <video autoplay muted loop playsinline>
+                                <video autoplay muted loop playsinline preload="auto">
                                     <source src="WhatsApp Video 2024-01-12 at 21.25.34_e3e7b81d.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -76,7 +80,8 @@
                     <div class="about-image">
                         <div class="about-circle">
                             <div class="about-img">
-                               <img src="image/enlarge_photo2.png" alt="">
+                               <img src="image/enlarge_photo2.png" alt="Tejas Deshmukh portrait">
+
                             </div>
                         </div>
                     </div>
@@ -364,11 +369,17 @@
         }
 
         // Splash screen
-        window.addEventListener("load", () => {
-            setTimeout(() => {
-                document.getElementById("splash").style.display = "none";
-            }, 6000);
-        });
+   window.addEventListener("load", () => {
+    // Disable scroll during splash
+    document.body.classList.add("no-scroll");
+
+    // Hide splash after typing effect
+    setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        document.body.classList.remove("no-scroll"); // Re-enable scroll
+    }, 4800); // match your typing duration
+});
+
 
         // Event listeners
         window.addEventListener('scroll', () => {
