@@ -6,19 +6,18 @@
     <meta name="description" content="Portfolio of Tejas Deshmukh, an IT Engineering student passionate about coding, problem-solving, and creating innovative solutions.">
     <title>Tejas Deshmukh - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="mainstyle.css">
     <link rel="icon" type="image/png" href="image/favicon.png">
-
+    <link rel="stylesheet" href="mainstyle.css">
 </head>
 <body>
- <div id="splash">
-  <div class="terminal">
-    <p id="line1">Initializing portfolio...</p>
-    <p id="line2">Loading Tejas Deshmukh's Profile...</p>
-    <p id="line3">Launching Website 🚀</p>
-    <p id="cursor">|</p>
-  </div>
-</div>
+    <div id="splash">
+        <div class="terminal">
+            <p id="line1">Initializing portfolio...</p>
+            <p id="line2">Loading Tejas Deshmukh's Profile...</p>
+            <p id="line3">Launching Website 🚀</p>
+            <p id="cursor">|</p>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav>
@@ -30,6 +29,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -48,10 +48,9 @@
                         <p>Passionate about learning new technologies and creating innovative solutions through code.</p>
                         
                         <div class="social-links">
-                           <a href="https://github.com/TejasD6504" target="_blank" class="social-link" aria-label="GitHub Profile">
-    <i class="fab fa-github"></i>
-</a>
-
+                            <a href="https://github.com/TejasD6504" target="_blank" class="social-link" aria-label="GitHub Profile">
+                                <i class="fab fa-github"></i>
+                            </a>
                             <a href="https://www.linkedin.com/in/tejas-deshmukh-24934329a" target="_blank" class="social-link">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -80,8 +79,7 @@
                     <div class="about-image">
                         <div class="about-circle">
                             <div class="about-img">
-                               <img src="image/enlarge_photo2.png" alt="Tejas Deshmukh portrait">
-
+                                <img src="image/enlarge_photo2.png" alt="Tejas Deshmukh portrait">
                             </div>
                         </div>
                     </div>
@@ -198,7 +196,7 @@
                                     </div>
                                     <div class="skill-name">Arduino IDE</div>
                                 </div>
-                                 <div class="skill-card">
+                                <div class="skill-card">
                                     <div class="skill-icon">
                                         <i class="fas fa-python"></i>
                                     </div>
@@ -294,6 +292,381 @@
             </div>
         </section>
 
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2 class="section-title">MY PROJECTS</h2>
+                
+                <!-- Project Filter Buttons -->
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th"></i>
+                        All Projects
+                    </button>
+                    <!-- <button class="filter-btn" data-filter="web">
+                        <i class="fas fa-globe"></i>
+                        Web Dev
+                    </button> -->
+                    <button class="filter-btn" data-filter="iot">
+                        <i class="fas fa-microchip"></i>
+                        IoT & Arduino
+                    </button>
+                    <button class="filter-btn" data-filter="software">
+                        <i class="fas fa-desktop"></i>
+                        Software
+                    </button>
+                    <!-- <button class="filter-btn" data-filter="ai">
+                        <i class="fas fa-brain"></i>
+                        AI & ML
+                    </button> -->
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="software">
+                       <div class="project-image slideshow-container">
+        <!-- Slideshow images -->
+        <div class="mySlides fade">
+            <img src="image/econo-frontpage.png" alt="CareFlex Prototype 1" class="project-img">
+        </div>
+        <div class="mySlides fade">
+            <img src="image/econo-register.png" alt="CareFlex Prototype 2" class="project-img">
+        </div>
+        <div class="mySlides fade">
+            <img src="image/econo-hotels.png" alt="CareFlex Prototype 3" class="project-img">
+        </div>
+           <div class="mySlides fade">
+            <img src="image/econo-trip.png" alt="CareFlex Prototype 4" class="project-img">
+        </div>
+         <div class="mySlides fade">
+            <img src="image/econo-final.png" alt="CareFlex Prototype 4" class="project-img">
+        </div>
+
+                            <div class="project-overlay">
+                                <span class="project-year">2022</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <div class="project-status status-in-progress">
+                                    <i class="fas fa-clock"></i>
+                                    Working
+                                </div>
+                                <div class="project-duration">6 weeks</div>
+                            </div>
+                            <h3 class="project-title">
+                                <i class="fas fa-laptop-code"></i>
+                                EconoTourist - The Economical Travel Guide
+                            </h3>
+                            <p class="project-description">
+                                A responsive website built with HTML, CSS, and JavaScript that helps users find budget-friendly travel options. Features include destination search, hotel comparisons, and itinerary planning. The backend is powered by Node.js and MySQL for secure user authentication and data management.
+                            </p>
+                            <div class="project-features">
+                                <span class="feature-item"><i class="fas fa-mobile-alt"></i> Responsive</span>
+                                <span class="feature-item"><i class="fas fa-rocket"></i> Fast Loading</span>
+                                <span class="feature-item"><i class="fas fa-paint-brush"></i> Modern UI</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Responsive Design</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Node.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TejasD6504/pblproject" class="project-link github-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+ <div class="project-card" data-category="iot">
+  <div class="project-image slideshow-container">
+        <!-- Slideshow images -->
+        <div class="mySlides fade">
+            <img src="image/careflex-belt.jpeg" alt="CareFlex Prototype 1" class="project-img">
+        </div>
+        <div class="mySlides fade">
+            <img src="image/careflex-frontpage.png" alt="CareFlex Prototype 2" class="project-img">
+        </div>
+        <div class="mySlides fade">
+            <img src="image/careflex-graph.png" alt="CareFlex Prototype 3" class="project-img">
+        </div>
+           <div class="mySlides fade">
+            <img src="image/careflex-logo.jpeg" alt="CareFlex Prototype 4" class="project-img">
+        </div>
+
+        <div class="project-overlay">
+            <span class="project-year">2025</span>
+        </div>
+    </div>
+
+    <div class="project-content">
+        <div class="project-header">
+            <div class="project-status status-completed">
+                <i class="fas fa-chart-line"></i>
+                Enhancing
+            </div>
+            <div class="project-duration">4 weeks</div>
+        </div>
+        <h3 class="project-title">
+            <i class="fas fa-robot"></i>
+            CareFlex - IOT based Post-Pregnancy Monitoring System
+        </h3>
+        <p class="project-description">
+            An IoT-based health monitoring system using Arduino Cloud where data is shared wirelessly and insights are shown on a website. Various sensors track vital signs such as heart rate, temperature, and humidity. Data is transmitted to a cloud platform for real-time monitoring and alerts.
+        </p>
+        <div class="project-features">
+            <span class="feature-item"><i class="fas fa-wifi"></i> IoT Connected</span>
+            <span class="feature-item"><i class="fas fa-shield-alt"></i> Secure</span>
+            <span class="feature-item"><i class="fas fa-chart-line"></i> Real-time</span>
+        </div>
+        <div class="project-tech">
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">IoT</span>
+            <span class="tech-tag">Sensors</span>
+            <span class="tech-tag">Cloud</span>
+            <span class="tech-tag">Web Dev</span>
+            <span class="tech-tag">Android Development</span>
+        </div>
+        <div class="project-links">
+            <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
+                <i class="fab fa-github"></i>
+                GitHub
+            </a>
+            <a href="https://careflex.vercel.app/" class="project-link live-link" target="_blank">
+                <i class="fas fa-eye"></i>
+                Live Site
+            </a>
+        </div>
+    </div>
+</div>
+
+
+                    <!-- Project 3 -->
+                     <div class="project-card" data-category="software">
+                       <div class="project-image slideshow-container">
+        <!-- Slideshow images -->
+        <div class="mySlides fade">
+            <img src="image/foodi-frontpage (1).png" alt="CareFlex Prototype 1" class="project-img">
+        </div>
+        <div class="mySlides fade">
+            <img src="image/foodi-About.png" alt="CareFlex Prototype 2" class="project-img">
+        </div>
+        <div class="mySlides fade">
+            <img src="image/foodi-find.png" alt="CareFlex Prototype 3" class="project-img">
+        </div>
+           <div class="mySlides fade">
+            <img src="image/foodi-fav.png" alt="CareFlex Prototype 4" class="project-img">
+        </div>
+        <div class="mySlides fade">
+            <img src="image/foodi-list.png" alt="CareFlex Prototype 3" class="project-img">
+        </div>
+           <div class="mySlides fade">
+            <img src="image/foodi-favdish.png" alt="CareFlex Prototype 4" class="project-img">
+        </div>
+                            <div class="project-overlay">
+                                <span class="project-year">2024</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <div class="project-status status-completed">
+                                    <i class="fas fa-check-circle"></i>
+                                    Completed
+                                </div>
+                                <div class="project-duration">4 weeks</div>
+                            </div>
+                            <h3 class="project-title">
+                                <i class="fas fa-desktop"></i>
+                                Foodi's (Recipe Finder)
+                            </h3>
+                            <p class="project-description">
+                            The Foodi’s is a web application designed to help users discover recipes based on the
+                            ingredients they have on hand. By inputting ingredients into a search form, users can
+                            fetch relevant recipe suggestions from the MealDB API.
+                            </p>
+                            <div class="project-features">
+                                <span class="feature-item"><i class="fas fa-database"></i> User-Friendly</span>
+                                <span class="feature-item"><i class="fas fa-chart-bar"></i> Responsive</span>
+                                <span class="feature-item"><i class="fas fa-lock"></i>Storage</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">API</span>
+
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TejasD6504/Techplementinternship" class="project-link github-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub Repo
+                                </a>
+                                <a href="https://teamweb03.vercel.app/" class="project-link live-link" target="_blank">
+                                    <i class="fas fa-eye"></i>
+                                   Live Site
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Project -4 -->
+                    
+                    <!--<div class="project-card" data-category="ai">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-year">2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <div class="project-status status-planned">
+                                    <i class="fas fa-lightbulb"></i>
+                                    Planned
+                                </div>
+                                <div class="project-duration">8 weeks</div>
+                            </div>
+                            <h3 class="project-title">
+                                <i class="fas fa-brain"></i>
+                                AI-Powered Study Assistant
+                            </h3>
+                            <p class="project-description">
+                                An intelligent study companion using Python and machine learning algorithms. Provides personalized study recommendations, progress tracking, and adaptive learning paths for students.
+                            </p>
+                            <div class="project-features">
+                                <span class="feature-item"><i class="fas fa-robot"></i> AI Powered</span>
+                                <span class="feature-item"><i class="fas fa-user-cog"></i> Personalized</span>
+                                <span class="feature-item"><i class="fas fa-chart-line"></i> Smart Analytics</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">API Integration</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                                <a href="#" class="project-link live-link" style="opacity: 0.5; pointer-events: none;">
+                                    <i class="fas fa-hourglass-half"></i>
+                                    Coming Soon
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-year">2024</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <div class="project-status status-completed">
+                                    <i class="fas fa-check-circle"></i>
+                                    Completed
+                                </div>
+                                <div class="project-duration">2 weeks</div>
+                            </div>
+                            <h3 class="project-title">
+                                <i class="fas fa-puzzle-piece"></i>
+                                Interactive Web Game
+                            </h3>
+                            <p class="project-description">
+                                A browser-based puzzle game built with vanilla JavaScript. Features include multiple difficulty levels, high score tracking, responsive design, and smooth animations.
+                            </p>
+                            <div class="project-features">
+                                <span class="feature-item"><i class="fas fa-trophy"></i> High Scores</span>
+                                <span class="feature-item"><i class="fas fa-gamepad"></i> Interactive</span>
+                                <span class="feature-item"><i class="fas fa-star"></i> Multiple Levels</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">HTML5 Canvas</span>
+                                <span class="tech-tag">CSS Animations</span>
+                                <span class="tech-tag">Local Storage</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                                <a href="#" class="project-link live-link" target="_blank">
+                                    <i class="fas fa-play"></i>
+                                    Play Game
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-year">2024</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <div class="project-status status-in-progress">
+                                    <i class="fas fa-clock"></i>
+                                    In Progress
+                                </div>
+                                <div class="project-duration">3 weeks</div>
+                            </div>
+                            <h3 class="project-title">
+                                <i class="fas fa-calculator"></i>
+                                Scientific Calculator App
+                            </h3>
+                            <p class="project-description">
+                                A feature-rich calculator application with scientific functions, history tracking, and theme customization. Built with modern JavaScript and designed for both desktop and mobile use.
+                            </p>
+                            <div class="project-features">
+                                <span class="feature-item"><i class="fas fa-history"></i> History</span>
+                                <span class="feature-item"><i class="fas fa-palette"></i> Themes</span>
+                                <span class="feature-item"><i class="fas fa-function"></i> Scientific</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">CSS Grid</span>
+                                <span class="tech-tag">PWA</span>
+                                <span class="tech-tag">Responsive</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                                <a href="#" class="project-link live-link" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Live App
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="section contact">
             <div class="container">
@@ -345,15 +718,53 @@
             });
         });
 
-        // Simple scroll animations
+        // Project Filtering System
+        function initProjectFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Filter projects with animation
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        
+                        if (filter === 'all' || category === filter) {
+                            card.classList.remove('hidden', 'filtering');
+                            card.classList.add('show');
+                        } else {
+                            card.classList.add('filtering');
+                            setTimeout(() => {
+                                card.classList.add('hidden');
+                                card.classList.remove('filtering', 'show');
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+
+        // Enhanced scroll animations with stagger effect
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.skill-card, .about-text-content, .contact-form');
-            elements.forEach(element => {
+            const elements = document.querySelectorAll('.skill-card, .about-text-content, .contact-form, .project-card:not(.hidden)');
+            elements.forEach((element, index) => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
                 
                 if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('fade-in');
+                    if (element.classList.contains('project-card')) {
+                        setTimeout(() => {
+                            element.classList.add('fade-in');
+                        }, (index % 6) * 100);
+                    } else {
+                        element.classList.add('fade-in');
+                    }
                 }
             });
         }
@@ -369,46 +780,82 @@
         }
 
         // Splash screen
-   window.addEventListener("load", () => {
-    // Disable scroll during splash
-    document.body.classList.add("no-scroll");
+        window.addEventListener("load", () => {
+            document.body.classList.add("no-scroll");
 
-    // Hide splash after typing effect
-    setTimeout(() => {
-        document.getElementById("splash").style.display = "none";
-        document.body.classList.remove("no-scroll"); // Re-enable scroll
-    }, 4800); // match your typing duration
-});
+            setTimeout(() => {
+                document.getElementById("splash").style.display = "none";
+                document.body.classList.remove("no-scroll");
+                
+                // Initialize project filters after splash
+                initProjectFilters();
+            }, 4800);
+        });
 
+        // Enhanced project interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectCards = document.querySelectorAll('.project-card');
+            const projectLinks = document.querySelectorAll('.project-link');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Project card hover effects
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 8px 25px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 4px 15px rgba(255, 165, 0, 0.1)';
+                });
+            });
+            
+            // Project link ripple effects
+            projectLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!this.href || this.href === '#' || this.href.endsWith('#')) {
+                        e.preventDefault();
+                    }
+                    
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    this.appendChild(ripple);
+                    const rect = this.getBoundingClientRect();
+                    ripple.style.left = `${e.clientX - rect.left}px`;
+                    ripple.style.top = `${e.clientY - rect.top}px`;
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
 
-        // Event listeners
-        window.addEventListener('scroll', () => {
+            // Animate on scroll
+            window.addEventListener('scroll', animateOnScroll);
             animateOnScroll();
+            // Navigation background scroll effect
+            window.addEventListener('scroll', handleNavScroll);
             handleNavScroll();
         });
 
-        // Form submission feedback
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            const btn = this.querySelector('.submit-btn');
-            const originalText = btn.textContent;
-            
-            btn.textContent = 'SENDING...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.textContent = 'SENT!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                }, 2000);
-            }, 1000);
-        });
+   // Select all slideshow containers
+document.querySelectorAll(".slideshow-container").forEach((container) => {
+    let slideIndex = 0;
+    const slides = container.querySelectorAll(".mySlides");
+
+    function showSlides() {
+        slides.forEach(slide => slide.style.display = "none"); // hide all
+        slideIndex++;
+        if (slideIndex > slides.length) slideIndex = 1;
+        slides[slideIndex - 1].style.display = "block"; // show current
+    }
+
+    // Start slideshow for this container
+    showSlides();
+    setInterval(showSlides, 3000); // change every 3s
+});
+
+
     </script>
+
 </body>
 </html>
-
-
-
-
-
-
+                
