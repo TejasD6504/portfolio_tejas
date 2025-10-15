@@ -1074,3 +1074,1112 @@
                 opacity: 0;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #tictactoe {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 60px 0;
+}
+
+#tictactoe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 165, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 165, 0, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+#tictactoe h1 {
+    color: orange;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+#tictactoe > p {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    grid-gap: 12px;
+    justify-content: center;
+    margin: 40px auto;
+    perspective: 1000px;
+    position: relative;
+    z-index: 1;
+}
+
+.cell {
+    width: 110px;
+    height: 110px;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.3), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cell:hover::before {
+    opacity: 1;
+}
+
+.cell:hover {
+    background: linear-gradient(135deg, #222, #333);
+    border-color: rgba(255, 165, 0, 0.5);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 165, 0, 0.2);
+}
+
+.cell.x {
+    color: #4ecdc4;
+    animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cell.o {
+    color: #ff6b6b;
+    animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cell.winner {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+    border-color: gold;
+    animation: winnerGlow 0.8s ease infinite alternate;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.cell.pulse {
+    animation: pulse 0.6s ease infinite;
+}
+
+.game-over .cell {
+    pointer-events: none;
+}
+
+.winning-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    padding: 40px 60px;
+    border-radius: 20px;
+    border: 3px solid orange;
+    box-shadow: 
+        0 0 50px rgba(255, 165, 0, 0.4),
+        inset 0 0 30px rgba(255, 165, 0, 0.1);
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.winning-message::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, orange, #e6c200, orange);
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(10px);
+}
+
+.winning-message.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.winning-message p {
+    color: orange;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+    animation: textGlow 1.5s ease infinite;
+}
+
+#restartButton {
+    background: linear-gradient(135deg, orange, #e6c200);
+    color: #000;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#restartButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+#restartButton:hover::before {
+    left: 100%;
+}
+
+#restartButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 165, 0, 0.5);
+}
+
+#restartButton:active {
+    transform: translateY(0);
+}
+
+/* Confetti Animation */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    z-index: 9999;
+    animation: confettiFall linear forwards;
+    border-radius: 2px;
+}
+
+/* Animations */
+@keyframes popIn {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.3) rotate(180deg);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes winnerGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+        transform: scale(1.08);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255, 165, 0, 0.8), 0 0 40px rgba(255, 165, 0, 0.6);
+    }
+}
+
+/* Responsive Design for Tic Tac Toe */
+@media (max-width: 768px) {
+    #tictactoe h1 {
+        font-size: 2rem;
+    }
+
+    #tictactoe > p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .board {
+        grid-template-columns: repeat(3, 90px);
+        grid-gap: 10px;
+    }
+
+    .cell {
+        width: 90px;
+        height: 90px;
+        font-size: 2.5rem;
+        border-radius: 10px;
+    }
+
+    .winning-message {
+        padding: 30px 40px;
+        max-width: 90%;
+    }
+
+    .winning-message p {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    #restartButton {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .board {
+        grid-template-columns: repeat(3, 75px);
+        grid-gap: 8px;
+    }
+
+    .cell {
+        width: 75px;
+        height: 75px;
+        font-size: 2rem;
+    }
+}
+/* Education Timeline Section - Add to your mainstyle.css */
+
+#education {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+#education::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(255, 165, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+#education h1 {
+    color: orange;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-underline-offset: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+#edu-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 40px 0;
+    z-index: 1;
+}
+
+/* Timeline vertical line */
+#edu-card::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, 
+        transparent 0%,
+        orange 10%,
+        orange 90%,
+        transparent 100%
+    );
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+.edu-card {
+    position: relative;
+    width: calc(50% - 40px);
+    padding: 30px;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+    border-radius: 15px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.edu-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Alternate positioning */
+.edu-card:nth-child(odd) {
+    margin-left: 0;
+    margin-right: auto;
+    animation: slideInLeft 0.6s ease forwards;
+}
+
+.edu-card:nth-child(even) {
+    margin-left: auto;
+    margin-right: 0;
+    animation: slideInRight 0.6s ease forwards;
+}
+
+/* Timeline dot */
+.edu-card::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: orange;
+    border: 4px solid #1a1a1a;
+    border-radius: 50%;
+    top: 40px;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
+    z-index: 2;
+}
+
+.edu-card:nth-child(odd)::before {
+    right: -50px;
+}
+
+.edu-card:nth-child(even)::before {
+    left: -50px;
+}
+
+/* Connector line from card to timeline */
+.edu-card::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(to right, #333, orange);
+    top: 48px;
+}
+
+.edu-card:nth-child(odd)::after {
+    right: -30px;
+    background: linear-gradient(to right, #333, orange);
+}
+
+.edu-card:nth-child(even)::after {
+    left: -30px;
+    background: linear-gradient(to left, #333, orange);
+}
+
+.edu-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: orange;
+    background: linear-gradient(135deg, #222, #333);
+    box-shadow: 0 8px 25px rgba(255, 165, 0, 0.4);
+}
+
+.edu-card h2 {
+    color: orange;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.edu-card h3 {
+    color: #ccc;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.edu-card p {
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edu-card p::before {
+    content: '📅';
+    font-size: 1.2rem;
+}
+
+.edu-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.edu-card ul li {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 8px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.edu-card ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: orange;
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #education h1 {
+        font-size: 2rem;
+    }
+
+    /* Mobile: Stack cards vertically with left-aligned timeline */
+    #edu-card::before {
+        left: 30px;
+    }
+
+    .edu-card {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+        margin-right: 0 !important;
+    }
+
+    .edu-card:nth-child(odd),
+    .edu-card:nth-child(even) {
+        animation: slideInRight 0.6s ease forwards;
+    }
+
+    .edu-card::before {
+        left: -44px !important;
+        right: auto !important;
+    }
+
+    .edu-card::after {
+        left: -30px !important;
+        right: auto !important;
+        background: linear-gradient(to left, #333, orange) !important;
+    }
+
+    .edu-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .edu-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .edu-card ul li {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #education {
+        padding: 60px 15px;
+    }
+
+    #education h1 {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    #edu-card {
+        padding: 20px 0;
+    }
+
+    #edu-card::before {
+        left: 20px;
+    }
+
+    .edu-card {
+        width: calc(100% - 50px);
+        margin-left: 50px !important;
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+
+    .edu-card::before {
+        left: -39px !important;
+        width: 16px;
+        height: 16px;
+        border-width: 3px;
+    }
+
+    .edu-card::after {
+        left: -25px !important;
+        width: 20px;
+        top: 45px;
+    }
+
+    .edu-card h2 {
+        font-size: 1.15rem;
+    }
+
+    .edu-card h3 {
+        font-size: 1rem;
+    }
+
+    .edu-card p {
+        font-size: 0.9rem;
+    }
+
+    .edu-card ul li {
+        font-size: 0.85rem;
+        padding-left: 20px;
+    }
+}
+
+
+
+
+
+
+/* Achievements Section - Add to your mainstyle.css */
+
+#achievements {
+    padding: 80px 20px;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+#achievements::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 165, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 165, 0, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.achievements-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+#achievements .section-title {
+    color: orange;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-underline-offset: 10px;
+}
+
+.achievements-subtitle {
+    text-align: center;
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+}
+
+/* Category Tabs */
+.achievement-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.tab-btn:hover::before {
+    left: 100%;
+}
+
+.tab-btn:hover {
+    border-color: rgba(255, 165, 0, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 165, 0, 0.2);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, orange, #e6c200);
+    color: #000;
+    border-color: orange;
+    box-shadow: 0 5px 20px rgba(255, 165, 0, 0.4);
+}
+
+.tab-btn i {
+    font-size: 1.2rem;
+}
+
+/* Achievements Grid */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.achievement-card {
+    background: linear-gradient(135deg, #111, #222);
+    border: 2px solid #333;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.achievement-card.show {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.achievement-card.hidden {
+    display: none;
+}
+
+/* Trophy/Medal Icon Circle */
+.achievement-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 165, 0, 0.1));
+    border: 3px solid orange;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.achievement-icon::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, orange, #e6c200, orange);
+    z-index: -1;
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.4s ease;
+}
+
+.achievement-card:hover .achievement-icon {
+    transform: scale(1.1) rotateY(360deg);
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.6);
+}
+
+.achievement-card:hover .achievement-icon::before {
+    opacity: 0.6;
+}
+
+/* Rank Badge */
+.rank-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #000;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.rank-badge.first {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+}
+
+.rank-badge.second {
+    background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+}
+
+.rank-badge.third {
+    background: linear-gradient(135deg, #cd7f32, #e6a76f);
+}
+
+.rank-badge.winner {
+    background: linear-gradient(135deg, orange, #e6c200);
+}
+
+.achievement-card h3 {
+    color: orange;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.achievement-card .event-name {
+    color: #aaa;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.achievement-card .date {
+    color: #888;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.achievement-card .description {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.achievement-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.achievement-tag {
+    background: rgba(255, 165, 0, 0.1);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    color: orange;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.achievement-tag:hover {
+    background: rgba(255, 165, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Course Card Specific Styles */
+.achievement-card.course {
+    border-left: 4px solid #4ecdc4;
+}
+
+.achievement-card.course .achievement-icon {
+    border-color: #4ecdc4;
+    background: linear-gradient(135deg, rgba(78, 205, 196, 0.2), rgba(78, 205, 196, 0.1));
+}
+
+.achievement-card.course h3 {
+    color: #4ecdc4;
+}
+
+.platform-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(78, 205, 196, 0.1);
+    border: 1px solid rgba(78, 205, 196, 0.3);
+    color: #4ecdc4;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin: 10px auto;
+}
+
+/* Hover Effects */
+.achievement-card:hover {
+    transform: translateY(-10px);
+    border-color: orange;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3);
+}
+
+.achievement-card.course:hover {
+    border-left-color: #4ecdc4;
+    box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+}
+
+/* Glowing Border Animation */
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, orange, #e6c200, orange);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.achievement-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes shimmer {
+    0%, 100% { background-position: 200% 0; }
+    50% { background-position: -200% 0; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stats Counter (Optional) */
+.achievements-stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    border-color: orange;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(255, 165, 0, 0.2);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: orange;
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #ccc;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #achievements {
+        padding: 60px 15px;
+    }
+
+    #achievements .section-title {
+        font-size: 2rem;
+    }
+
+    .achievements-subtitle {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .achievement-tabs {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tab-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .achievement-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .achievement-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .achievements-stats {
+        gap: 20px;
+    }
+
+    .stat-item {
+        padding: 15px 20px;
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+    }
+
+    .rank-badge {
+        top: 15px;
+        right: 15px;
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievement-card {
+        padding: 20px;
+    }
+
+    .achievement-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .achievement-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .achievement-card .event-name {
+        font-size: 0.9rem;
+    }
+}
