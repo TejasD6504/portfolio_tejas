@@ -146,18 +146,18 @@ function updateResponsiveSettings() {
 
   if (laptopGroup) {
     if (isMobile) {
-      // Mobile devices - center model in container
+      // Mobile devices - center model in container, bigger scale
       if (isPortrait) {
-        laptopGroup.scale.set(5, 5, 5);
-        laptopGroup.position.set(0, -0.3, 0);  // Centered horizontally
-        camera.position.set(0, 1.2, 6);
-        camera.fov = 50;
+        laptopGroup.scale.set(8, 8, 8);  // Increased from 5 to 8
+        laptopGroup.position.set(0, 0, 0);  // Centered
+        camera.position.set(0, 0.8, 4);  // Closer camera
+        camera.fov = 55;
       } else {
         // Mobile landscape
-        laptopGroup.scale.set(6, 6, 6);
-        laptopGroup.position.set(0, -0.3, 0);  // Centered horizontally
-        camera.position.set(0, 1.2, 5.5);
-        camera.fov = 45;
+        laptopGroup.scale.set(7, 7, 7);
+        laptopGroup.position.set(0, 0, 0);  // Centered
+        camera.position.set(0, 0.8, 4.5);
+        camera.fov = 50;
       }
     } else if (isTablet) {
       // Tablet devices

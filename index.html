@@ -202,12 +202,22 @@
             cursor: none !important;
         }
 
-        /* Hide cursor on touch devices */
+        /* Hide cursor on touch devices and mobile */
         @media (hover: none) and (pointer: coarse) {
             .cursor-ring, .cursor-ring-inner, .cursor-dot, .cursor-spark {
                 display: none !important;
             }
             html, body, a, button, .clickable, input, textarea, select {
+                cursor: auto !important;
+            }
+        }
+
+        /* Also hide cursor based on screen size for mobile */
+        @media (max-width: 768px) {
+            .cursor-ring, .cursor-ring-inner, .cursor-dot, .cursor-spark {
+                display: none !important;
+            }
+            html, body, a, button, .clickable, input, textarea, select, .nav-links a, .social-link {
                 cursor: auto !important;
             }
         }
@@ -236,13 +246,13 @@
 
             .hero-image {
                 width: 100% !important;
-                height: 350px !important;
+                height: 400px !important;
                 position: relative !important;
                 order: 2 !important;
                 display: flex !important;
                 justify-content: center !important;
                 align-items: center !important;
-                overflow: hidden !important;
+                overflow: visible !important;
             }
             
             #container3d {
@@ -260,7 +270,7 @@
 
         @media (max-width: 576px) {
             .hero-image {
-                height: 300px !important;
+                height: 380px !important;
             }
 
             .hero-text h1 {
@@ -274,7 +284,7 @@
 
         @media (max-width: 420px) {
             .hero-image {
-                height: 250px !important;
+                height: 350px !important;
             }
         }
 
@@ -577,8 +587,8 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(to right, var(--saffron), var(--saffron-light));
-            animation: progressLoad 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 1.5s;
+            animation: progressLoad 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 1s;
         }
 
         @keyframes progressLoad {
@@ -598,24 +608,6 @@
             opacity: 0;
             animation: fadeIn 0.6s ease forwards;
             animation-delay: 1.6s;
-        }
-
-        /* Ashoka Chakra subtle watermark */
-        .chakra-watermark {
-            position: fixed;
-            bottom: -80px;
-            right: -80px;
-            width: 280px;
-            height: 280px;
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 9997;
-            animation: chakraSpin 30s linear infinite;
-        }
-
-        @keyframes chakraSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         @keyframes fadeIn {
@@ -883,49 +875,15 @@
         <div class="corner corner-bl"></div>
         <div class="corner corner-br"></div>
 
-        <!-- Ashoka Chakra SVG watermark -->
-        <svg class="chakra-watermark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="48" stroke="white" stroke-width="1.5"/>
-            <circle cx="50" cy="50" r="8" stroke="white" stroke-width="1.5"/>
-            <circle cx="50" cy="50" r="3" fill="white"/>
-            <!-- 24 spokes -->
-            <g stroke="white" stroke-width="0.8">
-                <line x1="50" y1="42" x2="50" y2="8"/>
-                <line x1="50" y1="58" x2="50" y2="92"/>
-                <line x1="42" y1="50" x2="8" y2="50"/>
-                <line x1="58" y1="50" x2="92" y2="50"/>
-                <line x1="44.3" y1="44.3" x2="19.7" y2="19.7"/>
-                <line x1="55.7" y1="55.7" x2="80.3" y2="80.3"/>
-                <line x1="55.7" y1="44.3" x2="80.3" y2="19.7"/>
-                <line x1="44.3" y1="55.7" x2="19.7" y2="80.3"/>
-                <line x1="42.9" y1="45.3" x2="11.6" y2="30.3"/>
-                <line x1="57.1" y1="54.7" x2="88.4" y2="69.7"/>
-                <line x1="54.7" y1="42.9" x2="69.7" y2="11.6"/>
-                <line x1="45.3" y1="57.1" x2="30.3" y2="88.4"/>
-                <line x1="45.3" y1="42.9" x2="30.3" y2="11.6"/>
-                <line x1="54.7" y1="57.1" x2="69.7" y2="88.4"/>
-                <line x1="57.1" y1="45.3" x2="88.4" y2="30.3"/>
-                <line x1="42.9" y1="54.7" x2="11.6" y2="69.7"/>
-                <line x1="42" y1="43.5" x2="13" y2="25.5"/>
-                <line x1="58" y1="56.5" x2="87" y2="74.5"/>
-                <line x1="56.5" y1="42" x2="74.5" y2="13"/>
-                <line x1="43.5" y1="58" x2="25.5" y2="87"/>
-                <line x1="43.5" y1="42" x2="25.5" y2="13"/>
-                <line x1="56.5" y1="58" x2="74.5" y2="87"/>
-                <line x1="58" y1="43.5" x2="87" y2="25.5"/>
-                <line x1="42" y1="56.5" x2="13" y2="74.5"/>
-            </g>
-        </svg>
-
         <!-- Hero -->
         <div class="splash-hero">
             <span class="namaste-icon">🙏</span>
             <div class="divider"></div>
 
             <div class="language-wrap">
-                <span class="language-text" id="langText">Namaste</span>
+                <span class="language-text" id="langText">नमस्ते</span>
             </div>
-            <div class="language-label" id="langLabel">English</div>
+            <div class="language-label" id="langLabel">HINDI</div>
 
             <p class="splash-tagline">
                 Building Scalable Digital Experiences<br>
@@ -2819,14 +2777,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== SPLASH SCREEN FUNCTIONALITY =====
     (function initSplash() {
         const languages = [
-            { text: 'Namaste',     label: 'English'  },
-            { text: 'नमस्ते',       label: 'Hindi'    },
-            { text: 'नमस्कार',      label: 'Marathi'  },
-            { text: 'வணக்கம்',     label: 'Tamil'    },
-            { text: 'నమస్తే',      label: 'Telugu'   },
-            { text: 'ನಮಸ್ಕಾರ',     label: 'Kannada'  },
-            { text: 'નમસ્તે',      label: 'Gujarati' },
-            { text: 'নমস্কার',     label: 'Bengali'  },
+            { text: 'नमस्ते',       label: 'HINDI'    },
         ];
 
         let current = 0;
@@ -2838,26 +2789,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add splash-active class to prevent scrolling during splash
         body.classList.add('splash-active');
 
-        function nextLanguage() {
-            current = (current + 1) % languages.length;
-            const next = languages[current];
-
-            // Slide out
-            langText.classList.remove('slide-in');
-            langText.classList.add('slide-out');
-
-            setTimeout(() => {
-                langText.textContent = next.text;
-                langLabel.textContent = next.label;
-                langText.classList.remove('slide-out');
-                langText.classList.add('slide-in');
-            }, 260);
-        }
-
-        // Start cycling after initial display
-        setTimeout(() => {
-            setInterval(nextLanguage, 1400);
-        }, 1800);
+        // No language cycling needed - keep it simple with just Hindi
 
         // Hide splash screen and show main content
         setTimeout(() => {
@@ -2869,7 +2801,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 splashOverlay.style.display = 'none';
             }, 600);
-        }, 8500);
+        }, 5000);
     })();
 
     // ===== CREATIVE CURSOR FUNCTIONALITY =====
