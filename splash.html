@@ -1,0 +1,795 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejas Deshmukh - Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .terminal-window {
+            background: #1a1a1a;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-red { background: #ff5f56; }
+        .btn-yellow { background: #ffbd2e; }
+        .btn-green { background: #27c93f; }
+
+        .terminal-body {
+            padding: 25px;
+            color: #fff;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .command-line {
+            margin: 8px 0;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .prompt {
+            color: #fff;
+        }
+
+        .command {
+            color: #fff;
+        }
+
+        .success-line {
+            color: #ff8c00;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkmark {
+            color: #27c93f;
+            font-weight: bold;
+        }
+
+        .loading-line {
+            color: #ff8c00;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #ff8c00;
+            width: 0;
+            border-radius: 3px;
+            animation: fillProgress 2s ease-out forwards;
+        }
+
+        @keyframes fillProgress {
+            to { width: 100%; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #fff;
+            animation: blink 1s infinite;
+            margin-left: 3px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            border: 2px solid #ff8c00;
+            border-radius: 8px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .result-title {
+            color: #ff8c00;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .result-item {
+            margin: 8px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .result-label {
+            color: #ff8c00;
+            min-width: 100px;
+        }
+
+        .result-value {
+            color: #fff;
+        }
+
+        .dots {
+            display: inline-block;
+        }
+
+        .dots span {
+            animation: dotBlink 1.4s infinite;
+        }
+
+        .dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes dotBlink {
+            0%, 60%, 100% { opacity: 0; }
+            30% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .terminal-body {
+                font-size: 0.85rem;
+                padding: 20px;
+            }
+
+            .result-title {
+                font-size: 1.1rem;
+            }
+
+            .result-label {
+                min-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="terminal-button btn-red"></div>
+            <div class="terminal-button btn-yellow"></div>
+            <div class="terminal-button btn-green"></div>
+        </div>
+        <div class="terminal-body" id="terminal"></div>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+
+        const lines = [
+            { 
+                text: '> npm install tejas-portfolio',
+                delay: 0,
+                type: 'command'
+            },
+            { 
+                text: '✓ Searching for Developer\'s Portfolio',
+                delay: 1500,
+                type: 'success'
+            },
+            { 
+                text: '✓ Downloading',
+                delay: 3500,
+                type: 'loading'
+            },
+            { 
+                text: '',
+                delay: 6000,
+                type: 'result'
+            }
+        ];
+
+        function typeLine(text, element, callback) {
+            let i = 0;
+            const speed = 40;
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            type();
+        }
+
+        function addLine(lineData) {
+            setTimeout(() => {
+                if (lineData.type === 'result') {
+                    const resultBox = document.createElement('div');
+                    resultBox.className = 'result-box';
+                    resultBox.innerHTML = `
+                        <div class="result-title">TEJAS DESHMUKH</div>
+                        <div class="result-item">
+                            <span class="result-label">Role:</span>
+                            <span class="result-value">Full Stack Developer</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Status:</span>
+                            <span class="result-value">Active & Available</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Tech Stack:</span>
+                            <span class="result-value">React, Node.js, SQL</span>
+                        </div>
+                    `;
+                    terminal.appendChild(resultBox);
+                } else {
+                    const line = document.createElement('div');
+                    line.className = 'command-line';
+                    
+                    if (lineData.type === 'command') {
+                        line.className += ' command';
+                    } else if (lineData.type === 'success') {
+                        line.className += ' success-line';
+                    } else if (lineData.type === 'loading') {
+                        line.className += ' loading-line';
+                    }
+
+                    terminal.appendChild(line);
+
+                    typeLine(lineData.text, line, () => {
+                        if (lineData.type === 'loading') {
+                            const dots = document.createElement('span');
+                            dots.className = 'dots';
+                            dots.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+                            line.appendChild(dots);
+
+                            const progressBar = document.createElement('div');
+                            progressBar.className = 'progress-bar';
+                            progressBar.innerHTML = '<div class="progress-fill"></div>';
+                            line.appendChild(progressBar);
+                        } else {
+                            const cursor = document.createElement('span');
+                            cursor.className = 'cursor';
+                            line.appendChild(cursor);
+                        }
+                    });
+                }
+            }, lineData.delay);
+        }
+
+        lines.forEach(line => {
+            addLine(line);
+        });
+
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 8000);
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejas Deshmukh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --saffron: #FF6B00;
+            --saffron-light: #FF8C2A;
+            --saffron-pale: #FFF3E8;
+            --white: #FAFAF8;
+            --black: #0D0D0D;
+            --charcoal: #1A1A1A;
+            --green-india: #138808;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Subtle noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Radial saffron glow behind center */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(ellipse at center, rgba(255,107,0,0.12) 0%, rgba(255,107,0,0.04) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Decorative geometric lines */
+        .geo-line {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: geoReveal 1.2s ease forwards;
+        }
+
+        .geo-line-top {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(255,107,0,0.5), transparent);
+            animation-delay: 0.3s;
+        }
+
+        .geo-line-bottom {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to top, transparent, rgba(255,107,0,0.5), transparent);
+            animation-delay: 0.3s;
+        }
+
+        .geo-line-left {
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(to right, transparent, rgba(255,107,0,0.5), transparent);
+            animation-delay: 0.5s;
+        }
+
+        .geo-line-right {
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(to left, transparent, rgba(255,107,0,0.5), transparent);
+            animation-delay: 0.5s;
+        }
+
+        @keyframes geoReveal {
+            to { opacity: 1; }
+        }
+
+        /* Corner dots */
+        .corner {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--saffron);
+            opacity: 0;
+            animation: cornerReveal 0.8s ease forwards;
+            z-index: 0;
+        }
+
+        .corner-tl { top: 30px; left: 30px; animation-delay: 0.7s; }
+        .corner-tr { top: 30px; right: 30px; animation-delay: 0.7s; }
+        .corner-bl { bottom: 30px; left: 30px; animation-delay: 0.7s; }
+        .corner-br { bottom: 30px; right: 30px; animation-delay: 0.7s; }
+
+        @keyframes cornerReveal {
+            to { opacity: 0.6; }
+        }
+
+        /* Main hero container */
+        .hero {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 24px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* Namaste icon */
+        .namaste-icon {
+            font-size: clamp(64px, 12vw, 96px);
+            line-height: 1;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            animation: iconReveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.2s;
+            filter: none;
+            display: block;
+        }
+
+        @keyframes iconReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Thin decorative line above language text */
+        .divider {
+            width: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--saffron), transparent);
+            margin: 0 auto 28px;
+            animation: dividerExpand 0.8s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes dividerExpand {
+            to { width: 120px; }
+        }
+
+        /* Language display */
+        .language-wrap {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .language-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 8vw, 52px);
+            font-weight: 300;
+            color: var(--white);
+            letter-spacing: 0.04em;
+            line-height: 1;
+            display: block;
+            position: relative;
+        }
+
+        .language-text.slide-in {
+            animation: slideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .language-text.slide-out {
+            animation: slideOut 0.25s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-16px);
+            }
+        }
+
+        /* Language label */
+        .language-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            margin-bottom: 36px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            animation-delay: 1.1s;
+            min-height: 16px;
+        }
+
+        /* Tagline */
+        .tagline {
+            font-size: clamp(11px, 2.2vw, 13px);
+            font-weight: 300;
+            color: rgba(250,250,248,0.45);
+            letter-spacing: 0.12em;
+            line-height: 1.9;
+            text-transform: uppercase;
+            max-width: 380px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 1.3s;
+            margin-bottom: 48px;
+        }
+
+        .tagline span {
+            color: rgba(255, 107, 0, 0.7);
+        }
+
+        /* Progress bar */
+        .progress-wrap {
+            width: 160px;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            animation-delay: 1.5s;
+        }
+
+        .progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, var(--saffron), var(--saffron-light));
+            animation: progressLoad 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            60% { width: 75%; }
+            85% { width: 88%; }
+            100% { width: 100%; }
+        }
+
+        /* Loading label */
+        .loading-label {
+            margin-top: 14px;
+            font-size: 9px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.2);
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            animation-delay: 1.6s;
+        }
+
+        /* Ashoka Chakra subtle watermark */
+        .chakra-watermark {
+            position: fixed;
+            bottom: -80px;
+            right: -80px;
+            width: 280px;
+            height: 280px;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 0;
+            animation: chakraSpin 30s linear infinite;
+        }
+
+        @keyframes chakraSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Transition overlay */
+        .transition-overlay {
+            position: fixed;
+            inset: 0;
+            background: #0D0D0D;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+        }
+
+        .transition-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 24px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Geometric accents -->
+    <div class="geo-line geo-line-top"></div>
+    <div class="geo-line geo-line-bottom"></div>
+    <div class="geo-line geo-line-left"></div>
+    <div class="geo-line geo-line-right"></div>
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- Ashoka Chakra SVG watermark -->
+    <svg class="chakra-watermark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" stroke="white" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="8" stroke="white" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="3" fill="white"/>
+        <!-- 24 spokes -->
+        <g stroke="white" stroke-width="0.8">
+            <line x1="50" y1="42" x2="50" y2="8"/>
+            <line x1="50" y1="58" x2="50" y2="92"/>
+            <line x1="42" y1="50" x2="8" y2="50"/>
+            <line x1="58" y1="50" x2="92" y2="50"/>
+            <line x1="44.3" y1="44.3" x2="19.7" y2="19.7"/>
+            <line x1="55.7" y1="55.7" x2="80.3" y2="80.3"/>
+            <line x1="55.7" y1="44.3" x2="80.3" y2="19.7"/>
+            <line x1="44.3" y1="55.7" x2="19.7" y2="80.3"/>
+            <line x1="42.9" y1="45.3" x2="11.6" y2="30.3"/>
+            <line x1="57.1" y1="54.7" x2="88.4" y2="69.7"/>
+            <line x1="54.7" y1="42.9" x2="69.7" y2="11.6"/>
+            <line x1="45.3" y1="57.1" x2="30.3" y2="88.4"/>
+            <line x1="45.3" y1="42.9" x2="30.3" y2="11.6"/>
+            <line x1="54.7" y1="57.1" x2="69.7" y2="88.4"/>
+            <line x1="57.1" y1="45.3" x2="88.4" y2="30.3"/>
+            <line x1="42.9" y1="54.7" x2="11.6" y2="69.7"/>
+            <line x1="42" y1="43.5" x2="13" y2="25.5"/>
+            <line x1="58" y1="56.5" x2="87" y2="74.5"/>
+            <line x1="56.5" y1="42" x2="74.5" y2="13"/>
+            <line x1="43.5" y1="58" x2="25.5" y2="87"/>
+            <line x1="43.5" y1="42" x2="25.5" y2="13"/>
+            <line x1="56.5" y1="58" x2="74.5" y2="87"/>
+            <line x1="58" y1="43.5" x2="87" y2="25.5"/>
+            <line x1="42" y1="56.5" x2="13" y2="74.5"/>
+        </g>
+    </svg>
+
+    <!-- Hero -->
+    <div class="hero">
+        <span class="namaste-icon">🙏</span>
+        <div class="divider"></div>
+
+        <div class="language-wrap">
+            <span class="language-text" id="langText">Namaste</span>
+        </div>
+        <div class="language-label" id="langLabel">English</div>
+
+        <p class="tagline">
+            Building Scalable Digital Experiences<br>
+            with <span>Indian Roots</span> &amp; Global Vision
+        </p>
+
+        <div class="progress-wrap">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="loading-label">Loading Portfolio</div>
+    </div>
+
+    <div class="transition-overlay" id="overlay"></div>
+
+    <script>
+        const languages = [
+            { text: 'Namaste',     label: 'English'  },
+            { text: 'नमस्ते',       label: 'Hindi'    },
+            { text: 'नमस्कार',      label: 'Marathi'  },
+            { text: 'வணக்கம்',     label: 'Tamil'    },
+            { text: 'నమస్తే',      label: 'Telugu'   },
+            { text: 'ನಮಸ್ಕಾರ',     label: 'Kannada'  },
+            { text: 'નમસ્તે',      label: 'Gujarati' },
+            { text: 'নমস্কার',     label: 'Bengali'  },
+        ];
+
+        let current = 0;
+        const langText = document.getElementById('langText');
+        const langLabel = document.getElementById('langLabel');
+
+        function nextLanguage() {
+            current = (current + 1) % languages.length;
+            const next = languages[current];
+
+            // Slide out
+            langText.classList.remove('slide-in');
+            langText.classList.add('slide-out');
+
+            setTimeout(() => {
+                langText.textContent = next.text;
+                langLabel.textContent = next.label;
+                langText.classList.remove('slide-out');
+                langText.classList.add('slide-in');
+            }, 260);
+        }
+
+        // Start cycling after initial display
+        setTimeout(() => {
+            setInterval(nextLanguage, 1400);
+        }, 1800);
+
+        // Navigate to main portfolio
+        setTimeout(() => {
+            const overlay = document.getElementById('overlay');
+            overlay.classList.add('active');
+            setTimeout(() => {
+                window.location.href = 'newindex.html';
+            }, 700);
+        }, 8500);
+    </script>
+</body>
+</html>
