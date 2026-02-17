@@ -488,7 +488,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            margin-bottom: 8px;
+            margin-bottom: 36px;
             opacity: 0;
             animation: fadeIn 0.6s ease forwards;
             animation-delay: 1s;
@@ -535,20 +535,6 @@
             }
         }
 
-        /* Language label */
-        .language-label {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--saffron);
-            margin-bottom: 36px;
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-            animation-delay: 1.1s;
-            min-height: 16px;
-        }
-
         /* Tagline */
         .splash-tagline {
             font-size: clamp(11px, 2.2vw, 13px);
@@ -587,7 +573,7 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(to right, var(--saffron), var(--saffron-light));
-            animation: progressLoad 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: progressLoad 9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             animation-delay: 1s;
         }
 
@@ -716,18 +702,6 @@
         /* ===== MAGNETIC BUTTONS ===== */
         .magnetic {
             transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* ===== TYPED TEXT EFFECT ===== */
-        .typed-text {
-            border-right: 3px solid #FFA500;
-            padding-right: 5px;
-            animation: blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes blink-caret {
-            0%, 100% { border-color: #FFA500; }
-            50% { border-color: transparent; }
         }
 
         /* ===== TILT EFFECT ON CARDS ===== */
@@ -881,9 +855,8 @@
             <div class="divider"></div>
 
             <div class="language-wrap">
-                <span class="language-text" id="langText">नमस्ते</span>
+                <span class="language-text" id="langText">Namaste</span>
             </div>
-            <div class="language-label" id="langLabel">HINDI</div>
 
             <p class="splash-tagline">
                 Building Scalable Digital Experiences<br>
@@ -2777,19 +2750,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== SPLASH SCREEN FUNCTIONALITY =====
     (function initSplash() {
         const languages = [
-            { text: 'नमस्ते',       label: 'HINDI'    },
+            { text: 'Namaste' },
+            { text: 'नमस्ते' },
+            { text: 'नमस्कार' },
+            { text: 'నమస్కారం' },
+            { text: 'வணக்கம்' },
+            { text: 'ನಮಸ್ಕಾರ' },
+            { text: 'નમસ્તે' },
+            { text: 'নমস্কার' },
         ];
 
         let current = 0;
         const langText = document.getElementById('langText');
-        const langLabel = document.getElementById('langLabel');
         const splashOverlay = document.getElementById('splashOverlay');
         const body = document.body;
 
         // Add splash-active class to prevent scrolling during splash
         body.classList.add('splash-active');
 
-        // No language cycling needed - keep it simple with just Hindi
+        function nextLanguage() {
+            current = (current + 1) % languages.length;
+            const next = languages[current];
+
+            // Slide out
+            langText.classList.remove('slide-in');
+            langText.classList.add('slide-out');
+
+            setTimeout(() => {
+                langText.textContent = next.text;
+                langText.classList.remove('slide-out');
+                langText.classList.add('slide-in');
+            }, 260);
+        }
+
+        // Start cycling after initial display
+        setTimeout(() => {
+            setInterval(nextLanguage, 1200);
+        }, 1500);
 
         // Hide splash screen and show main content
         setTimeout(() => {
@@ -2801,7 +2798,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 splashOverlay.style.display = 'none';
             }, 600);
-        }, 5000);
+        }, 10000);
     })();
 
     // ===== CREATIVE CURSOR FUNCTIONALITY =====
@@ -3007,33 +3004,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.style.transform = 'translate(0, 0)';
             });
         });
-    })();
-
-    // ===== TYPED TEXT EFFECT =====
-    (function initTypedText() {
-        const nameElement = document.querySelector('.hero-text .name');
-        if (!nameElement) return;
-
-        const originalText = nameElement.textContent;
-        nameElement.textContent = '';
-        nameElement.classList.add('typed-text');
-
-        let charIndex = 0;
-        function typeChar() {
-            if (charIndex < originalText.length) {
-                nameElement.textContent += originalText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeChar, 100);
-            } else {
-                // Remove cursor after typing
-                setTimeout(() => {
-                    nameElement.classList.remove('typed-text');
-                }, 1000);
-            }
-        }
-
-        // Start typing after splash screen
-        setTimeout(typeChar, 9000);
     })();
 
     // ===== RIPPLE EFFECT ON BUTTONS =====
