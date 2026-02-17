@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="mainstyle.css">
     <style>
         /* Quote section styles */
+        
         .quote-section {
             background: linear-gradient(135deg, rgba(255,165,0,0.04), rgba(0,0,0,0));
             padding: 3rem 1.5rem;
@@ -90,855 +91,112 @@
             .quote-controls { flex-direction: row; }
         }
 
-        /* ===== CREATIVE CUSTOM CURSOR ===== */
-        .cursor-ring {
-            width: 50px;
-            height: 50px;
-            border: 2px solid transparent;
-            border-top-color: #FFA500;
-            border-right-color: #FFD700;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            animation: cursorRotate 1.5s linear infinite;
-            transition: width 0.3s ease, height 0.3s ease, border-width 0.3s ease;
+
+          .project-achievements {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 165, 0, 0.15);
         }
 
-        .cursor-ring-inner {
-            width: 30px;
-            height: 30px;
-            border: 1px solid rgba(255, 165, 0, 0.3);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            animation: cursorRotateReverse 2s linear infinite;
-            transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
-        }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(135deg, #FFA500, #FFD700);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 20px #FFA500, 0 0 40px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.2);
-            transition: transform 0.1s ease, box-shadow 0.2s ease;
-        }
-
-        .cursor-spark {
-            width: 4px;
-            height: 4px;
-            background: #FFD700;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99998;
-            opacity: 0;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes cursorRotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        @keyframes cursorRotateReverse {
-            from { transform: translate(-50%, -50%) rotate(360deg); }
-            to { transform: translate(-50%, -50%) rotate(0deg); }
-        }
-
-        /* Hover states */
-        .cursor-ring.hover {
-            width: 80px;
-            height: 80px;
-            border-width: 3px;
-            border-color: #FFA500;
-            animation: cursorRotate 0.8s linear infinite;
-        }
-
-        .cursor-ring-inner.hover {
-            width: 50px;
-            height: 50px;
-            border-color: rgba(255, 165, 0, 0.6);
-        }
-
-        .cursor-dot.hover {
-            transform: translate(-50%, -50%) scale(1.5);
-            box-shadow: 0 0 30px #FFA500, 0 0 60px rgba(255, 165, 0, 0.6), 0 0 90px rgba(255, 165, 0, 0.3);
-        }
-
-        /* Click states */
-        .cursor-ring.click {
-            width: 30px;
-            height: 30px;
-            border-width: 4px;
-            border-color: #FFD700;
-        }
-
-        .cursor-ring-inner.click {
-            width: 15px;
-            height: 15px;
-            opacity: 0;
-        }
-
-        .cursor-dot.click {
-            transform: translate(-50%, -50%) scale(2);
-            background: #FFD700;
-        }
-
-        /* Hide default cursor */
-        html, body {
-            cursor: none !important;
-        }
-
-        a, button, .clickable, input, textarea, select, .nav-links a, .social-link {
-            cursor: none !important;
-        }
-
-        /* Hide cursor on touch devices */
-        @media (hover: none) and (pointer: coarse) {
-            .cursor-ring, .cursor-ring-inner, .cursor-dot, .cursor-spark {
-                display: none !important;
-            }
-            html, body, a, button, .clickable, input, textarea, select {
-                cursor: auto !important;
-            }
-        }
-
-        /* ===== 3D MODEL RESPONSIVE STYLES ===== */
-        @media (max-width: 1024px) {
-            #container3d {
-                transform: scale(0.9);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0 !important;
-            }
-            
-            .hero-text {
-                text-align: center !important;
-                order: 1 !important;
-                padding: 20px !important;
-                position: relative !important;
-                z-index: 10 !important;
-            }
-
-            .hero-image {
-                width: 100% !important;
-                height: 350px !important;
-                position: relative !important;
-                order: 2 !important;
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                overflow: hidden !important;
-            }
-            
-            #container3d {
-                position: absolute !important;
-                inset: 0 !important;
-                width: 100% !important;
-                height: 100% !important;
-                transform: none !important;
-            }
-
-            .social-links {
-                justify-content: center !important;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-image {
-                height: 300px !important;
-            }
-
-            .hero-text h1 {
-                font-size: 1.5rem !important;
-            }
-
-            .hero-text .name {
-                font-size: 2rem !important;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .hero-image {
-                height: 250px !important;
-            }
-        }
-
-        /* Hide scrollbar but keep functionality */
-        html {
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
-        }
-
-        html::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-
-        /* ===== SPLASH SCREEN STYLES ===== */
-        :root {
-            --saffron: #FFA500;
-            --saffron-light: #FFB833;
-            --saffron-pale: #FFF3E8;
-            --white: #FAFAF8;
-            --black: #000000;
-            --charcoal: #1A1A1A;
-        }
-
-        /* Splash screen container */
-        body.splash-active {
-            overflow: hidden !important;
-        }
-
-        body {
-            overflow-y: auto !important;
-            overflow-x: hidden;
-        }
-
-        .splash-overlay {
-            position: fixed;
-            inset: 0;
-            background: var(--black);
+        .achievements-header {
             display: flex;
-            justify-content: center;
             align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.6s ease;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
-        .splash-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .achievements-header i {
+            font-size: 1.1rem;
         }
 
-        /* Subtle noise texture overlay */
-        .splash-overlay::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Radial saffron glow behind center */
-        .splash-overlay::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(ellipse at center, rgba(255,107,0,0.12) 0%, rgba(255,107,0,0.04) 40%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Decorative geometric lines */
-        .geo-line {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            opacity: 0;
-            animation: geoReveal 1.2s ease forwards;
-        }
-
-        .geo-line-top {
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, rgba(255,107,0,0.5), transparent);
-            animation-delay: 0.3s;
-        }
-
-        .geo-line-bottom {
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 100px;
-            background: linear-gradient(to top, transparent, rgba(255,107,0,0.5), transparent);
-            animation-delay: 0.3s;
-        }
-
-        .geo-line-left {
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 1px;
-            width: 100px;
-            background: linear-gradient(to right, transparent, rgba(255,107,0,0.5), transparent);
-            animation-delay: 0.5s;
-        }
-
-        .geo-line-right {
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 1px;
-            width: 100px;
-            background: linear-gradient(to left, transparent, rgba(255,107,0,0.5), transparent);
-            animation-delay: 0.5s;
-        }
-
-        @keyframes geoReveal {
-            to { opacity: 1; }
-        }
-
-        /* Corner dots */
-        .corner {
-            position: fixed;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--saffron);
-            opacity: 0;
-            animation: cornerReveal 0.8s ease forwards;
-            z-index: 9998;
-        }
-
-        .corner-tl { top: 30px; left: 30px; animation-delay: 0.7s; }
-        .corner-tr { top: 30px; right: 30px; animation-delay: 0.7s; }
-        .corner-bl { bottom: 30px; left: 30px; animation-delay: 0.7s; }
-        .corner-br { bottom: 30px; right: 30px; animation-delay: 0.7s; }
-
-        @keyframes cornerReveal {
-            to { opacity: 0.6; }
-        }
-
-        /* Main hero container */
-        .splash-hero {
-            position: relative;
-            z-index: 9998;
+        .achievements-list {
             display: flex;
             flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .achievement-badge {
+            display: flex;
             align-items: center;
-            text-align: center;
-            padding: 40px 24px;
-            max-width: 600px;
-            width: 100%;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 165, 0, 0.04));
+            border: 1px solid rgba(255, 165, 0, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.4s ease backwards;
         }
 
-        /* Namaste icon */
-        .namaste-icon {
-            font-size: clamp(64px, 12vw, 96px);
-            line-height: 1;
-            margin-bottom: 32px;
-            opacity: 0;
-            transform: translateY(20px) scale(0.9);
-            animation: iconReveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            animation-delay: 0.2s;
-            filter: none;
-            display: block;
-        }
+        .achievement-badge:nth-child(1) { animation-delay: 0.1s; }
+        .achievement-badge:nth-child(2) { animation-delay: 0.2s; }
+        .achievement-badge:nth-child(3) { animation-delay: 0.3s; }
+        .achievement-badge:nth-child(4) { animation-delay: 0.4s; }
+        .achievement-badge:nth-child(5) { animation-delay: 0.5s; }
 
-        @keyframes iconReveal {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
-        /* Thin decorative line above language text */
-        .divider {
-            width: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--saffron), transparent);
-            margin: 0 auto 28px;
-            animation: dividerExpand 0.8s ease forwards;
-            animation-delay: 0.8s;
+        .achievement-badge:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 165, 0, 0.08));
+            border-color: rgba(255, 165, 0, 0.3);
+            transform: translateX(5px);
         }
 
-        @keyframes dividerExpand {
-            to { width: 120px; }
-        }
-
-        /* Language display */
-        .language-wrap {
-            height: 64px;
+        .achievement-icon-small {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            margin-bottom: 8px;
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-            animation-delay: 1s;
+            font-size: 0.85rem;
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(255, 215, 0, 0.3);
         }
 
-        .language-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(36px, 8vw, 52px);
-            font-weight: 300;
-            color: var(--white);
-            letter-spacing: 0.04em;
-            line-height: 1;
-            display: block;
-            position: relative;
+        .achievement-text {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
-        .language-text.slide-in {
-            animation: slideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        .language-text.slide-out {
-            animation: slideOut 0.25s cubic-bezier(0.55, 0, 1, 0.45) forwards;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .achievement-badge {
+                padding: 0.6rem 0.85rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .achievement-text {
+                font-size: 0.85rem;
+            }
+
+            .achievement-icon-small {
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                font-size: 0.75rem;
             }
         }
 
-        @keyframes slideOut {
-            from {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(-16px);
-            }
-        }
-
-        /* Language label */
-        .language-label {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--saffron);
-            margin-bottom: 36px;
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-            animation-delay: 1.1s;
-            min-height: 16px;
-        }
-
-        /* Tagline */
-        .splash-tagline {
-            font-size: clamp(11px, 2.2vw, 13px);
-            font-weight: 300;
-            color: rgba(250,250,248,0.45);
-            letter-spacing: 0.12em;
-            line-height: 1.9;
-            text-transform: uppercase;
-            max-width: 380px;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-            animation-delay: 1.3s;
-            margin-bottom: 48px;
-        }
-
-        .splash-tagline span {
-            color: rgba(255, 107, 0, 0.7);
-        }
-
-        /* Progress bar */
-        .progress-wrap {
-            width: 160px;
-            height: 1px;
-            background: rgba(255,255,255,0.08);
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-            animation-delay: 1.5s;
-        }
-
-        .progress-fill {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(to right, var(--saffron), var(--saffron-light));
-            animation: progressLoad 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes progressLoad {
-            0% { width: 0%; }
-            60% { width: 75%; }
-            85% { width: 88%; }
-            100% { width: 100%; }
-        }
-
-        /* Loading label */
-        .loading-label {
-            margin-top: 14px;
-            font-size: 9px;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.2);
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-            animation-delay: 1.6s;
-        }
-
-        /* Ashoka Chakra subtle watermark */
-        .chakra-watermark {
-            position: fixed;
-            bottom: -80px;
-            right: -80px;
-            width: 280px;
-            height: 280px;
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 9997;
-            animation: chakraSpin 30s linear infinite;
-        }
-
-        @keyframes chakraSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @media (max-width: 480px) {
-            .splash-hero { padding: 24px 16px; }
-        }
-
-        /* ===== SCROLL PROGRESS BAR ===== */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, #FFA500, #FFD700, #FFA500);
-            z-index: 99999;
-            transition: width 0.1s ease;
-        }
-
-        /* ===== SCROLL REVEAL ANIMATIONS ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal-scale.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* ===== FLOATING PARTICLES ===== */
-        .particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 165, 0, 0.6);
-            border-radius: 50%;
-            animation: floatParticle 15s infinite ease-in-out;
-        }
-
-        @keyframes floatParticle {
-            0%, 100% {
-                transform: translateY(0) translateX(0) scale(1);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(50px) scale(0.5);
-                opacity: 0;
-            }
-        }
-
-        /* ===== MAGNETIC BUTTONS ===== */
-        .magnetic {
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* ===== TYPED TEXT EFFECT ===== */
-        .typed-text {
-            border-right: 3px solid #FFA500;
-            padding-right: 5px;
-            animation: blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes blink-caret {
-            0%, 100% { border-color: #FFA500; }
-            50% { border-color: transparent; }
-        }
-
-        /* ===== TILT EFFECT ON CARDS ===== */
-        .tilt-card {
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease;
-        }
-
-        .tilt-card:hover {
-            transform: perspective(1000px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
-        }
-
-        /* ===== NAVBAR SCROLL EFFECT ===== */
-        nav.scrolled {
-            background: rgba(0, 0, 0, 0.95) !important;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 2px 30px rgba(255, 165, 0, 0.1);
-        }
-
-        nav.scrolled .logo {
-            color: #FFA500;
-        }
-
-        /* ===== GLOWING TEXT EFFECT ===== */
-        .glow-text:hover {
-            text-shadow: 0 0 10px rgba(255, 165, 0, 0.5),
-                         0 0 20px rgba(255, 165, 0, 0.3),
-                         0 0 30px rgba(255, 165, 0, 0.2);
-        }
-
-        /* ===== RIPPLE EFFECT ON BUTTONS ===== */
-        .ripple {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ripple-effect {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 165, 0, 0.4);
-            transform: scale(0);
-            animation: ripple-animation 0.6s linear;
-            pointer-events: none;
-        }
-
-        @keyframes ripple-animation {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
-        /* ===== BREATHING GLOW ON SOCIAL LINKS ===== */
-        .social-link {
-            animation: breathe 3s ease-in-out infinite;
-        }
-
-        .social-link:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        @keyframes breathe {
-            0%, 100% { box-shadow: 0 0 5px rgba(255, 165, 0, 0.2); }
-            50% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.4); }
-        }
-
-        /* ===== COUNTER ANIMATION ===== */
-        .counter {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #FFA500;
-        }
-
-        /* ===== SMOOTH SECTION TRANSITIONS ===== */
-        .section {
-            position: relative;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #FFA500, transparent);
-            transition: width 0.8s ease;
-        }
-
-        .section.active::before {
-            width: 200px;
-        }
-
-        /* ===== ACTIVE NAV LINK ===== */
-        .nav-links a.active {
-            color: #FFA500 !important;
-            position: relative;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #FFA500;
-            border-radius: 2px;
-        }
-
-        .nav-links a {
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #FFA500 !important;
-        }
+        
 
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <!-- Creative Custom Cursor -->
-    <div class="cursor-ring" id="cursorRing"></div>
-    <div class="cursor-ring-inner" id="cursorRingInner"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-spark" id="spark1"></div>
-    <div class="cursor-spark" id="spark2"></div>
-    <div class="cursor-spark" id="spark3"></div>
-    <div class="cursor-spark" id="spark4"></div>
-    <div class="cursor-spark" id="spark5"></div>
-    <div class="cursor-spark" id="spark6"></div>
-
-    <!-- ===== SPLASH SCREEN ===== -->
-    <div class="splash-overlay" id="splashOverlay">
-        <!-- Geometric accents -->
-        <div class="geo-line geo-line-top"></div>
-        <div class="geo-line geo-line-bottom"></div>
-        <div class="geo-line geo-line-left"></div>
-        <div class="geo-line geo-line-right"></div>
-        <div class="corner corner-tl"></div>
-        <div class="corner corner-tr"></div>
-        <div class="corner corner-bl"></div>
-        <div class="corner corner-br"></div>
-
-        <!-- Ashoka Chakra SVG watermark -->
-        <svg class="chakra-watermark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="48" stroke="white" stroke-width="1.5"/>
-            <circle cx="50" cy="50" r="8" stroke="white" stroke-width="1.5"/>
-            <circle cx="50" cy="50" r="3" fill="white"/>
-            <!-- 24 spokes -->
-            <g stroke="white" stroke-width="0.8">
-                <line x1="50" y1="42" x2="50" y2="8"/>
-                <line x1="50" y1="58" x2="50" y2="92"/>
-                <line x1="42" y1="50" x2="8" y2="50"/>
-                <line x1="58" y1="50" x2="92" y2="50"/>
-                <line x1="44.3" y1="44.3" x2="19.7" y2="19.7"/>
-                <line x1="55.7" y1="55.7" x2="80.3" y2="80.3"/>
-                <line x1="55.7" y1="44.3" x2="80.3" y2="19.7"/>
-                <line x1="44.3" y1="55.7" x2="19.7" y2="80.3"/>
-                <line x1="42.9" y1="45.3" x2="11.6" y2="30.3"/>
-                <line x1="57.1" y1="54.7" x2="88.4" y2="69.7"/>
-                <line x1="54.7" y1="42.9" x2="69.7" y2="11.6"/>
-                <line x1="45.3" y1="57.1" x2="30.3" y2="88.4"/>
-                <line x1="45.3" y1="42.9" x2="30.3" y2="11.6"/>
-                <line x1="54.7" y1="57.1" x2="69.7" y2="88.4"/>
-                <line x1="57.1" y1="45.3" x2="88.4" y2="30.3"/>
-                <line x1="42.9" y1="54.7" x2="11.6" y2="69.7"/>
-                <line x1="42" y1="43.5" x2="13" y2="25.5"/>
-                <line x1="58" y1="56.5" x2="87" y2="74.5"/>
-                <line x1="56.5" y1="42" x2="74.5" y2="13"/>
-                <line x1="43.5" y1="58" x2="25.5" y2="87"/>
-                <line x1="43.5" y1="42" x2="25.5" y2="13"/>
-                <line x1="56.5" y1="58" x2="74.5" y2="87"/>
-                <line x1="58" y1="43.5" x2="87" y2="25.5"/>
-                <line x1="42" y1="56.5" x2="13" y2="74.5"/>
-            </g>
-        </svg>
-
-        <!-- Hero -->
-        <div class="splash-hero">
-            <span class="namaste-icon">🙏</span>
-            <div class="divider"></div>
-
-            <div class="language-wrap">
-                <span class="language-text" id="langText">Namaste</span>
-            </div>
-            <div class="language-label" id="langLabel">English</div>
-
-            <p class="splash-tagline">
-                Building Scalable Digital Experiences<br>
-                with <span>Indian Roots</span> &amp; Global Vision
-            </p>
-
-            <div class="progress-wrap">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="loading-label">Loading Portfolio</div>
-        </div>
-    </div>
-   <!-- <div id="splash">
+    <!-- <div id="splash">
         <div class="splash-container">
             <h1 class="brand-name">TEJAS DESHMUKH</h1>
             <p class="tagline">Portfolio</p>
@@ -971,10 +229,10 @@
                     <div class="spoke"></div>
 
                     <div class="center">
-        
-                        <img src="image/mainimage.jpeg" alt="Profile" class="center-image">
-                     
-                         <div class="center-icon"></div> 
+                         Replace the src with your image URL -->
+                        <!-- <img src="image/mainimage.jpeg" alt="Profile" class="center-image"> -->
+                        <!-- If you want to use the lock icon instead, comment the img above and uncomment below -->
+                        <!-- <div class="center-icon"></div> 
                     </div>
 
                     <div class="screw"></div>
@@ -993,7 +251,6 @@
             <p class="loading-text">LOADING...</p>
         </div>
     </div> -->
-
 
     <!-- Navigation -->
     <nav>
@@ -1032,6 +289,9 @@
                             </a>
                         </div>
                     </div>
+
+    <!-- <div id="container3d"></div> -->
+
                     
                     <div class="hero-image">
                         <!-- <div class="profile-circle">
@@ -1042,26 +302,12 @@
                                 </video>
                             </div>
                         </div> -->
-                          <div id="container3d"></div>
+    <div id="container3d"></div>
+
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Quote Section -->
-        <!-- <section id="quotes" class="quote-section">
-            <div class="quote-card container">
-                <div>
-                    <div id="quoteText" class="quote-text">"Code is like humor. When you have to explain it, it’s bad."</div>
-                    <div id="quoteAuthor" class="quote-author">— Cory House</div>
-                </div>
-                <div class="quote-controls">
-                    <button id="prevQuote" class="quote-btn" aria-label="Previous quote"><i class="fas fa-chevron-left"></i></button>
-                    <button id="nextQuote" class="quote-btn" aria-label="Next quote"><i class="fas fa-chevron-right"></i></button>
-                    <div id="quoteDots" class="quote-dots" aria-hidden="true"></div>
-                </div>
-            </div>
-        </section> -->
 
         <!-- About Section -->
         <section id="about" class="section about">
@@ -1096,288 +342,6 @@
                 </div>
             </div>
         </section>
-
-        <section id="tictactoe" class="tictactoe">
-    <h1>🎮 Play Tic Tac Toe</h1>
-    <p>Challenge the computer while exploring my portfolio! You're X, Computer is O.</p>
-    <div id="game-board" class="board">
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-    </div>
-    <div id="winning-message" class="winning-message">
-        <p id="message-text"></p>
-        <button id="restartButton">Play Again</button>
-    </div>
-</section>
-
-
-<section id="education">
-    <h1>🎓 EDUCATION</h1>
-
-    <div id="edu-card">
-        <div class="edu-card">
-            <h2>B.Tech in Information Technology</h2>
-            <h3>K.K Wagh College of Engineering</h3>
-            <p>2022 - Present</p>
-            <ul>
-                <li>CGPA: 8.3/10</li>
-                <li>Relevant Coursework: Data Structures, Database Management, Networking</li>
-                <li>Activities: Member of Coding Club, Participated in Tech Fest</li>
-            </ul>
-        </div>
-
-        <div class="edu-card">
-            <h2>Higher Secondary Certificate (HSC)</h2>
-            <h3>RYK College of Science, Nashik</h3>
-            <p>2019 - 2021</p>
-            <ul>
-                <li>Percentage: 67%</li>
-                <li>Science Stream with Mathematics</li>
-                <li>Focus: Physics, Chemistry, Mathematics, Computer Science</li>
-            </ul>
-        </div>
-
-        <div class="edu-card">
-            <h2>Secondary School Certificate (SSC)</h2>
-            <h3>Adarsh Secondary School</h3>
-            <p>2018 - 2019</p>
-            <ul>
-                <li>Percentage: 85%</li>
-                <li>Strong foundation in core subjects</li>
-                <li>Activities: Science Club, Basketball Team</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-
-<!-- <section id="achievements">
-    <div class="achievements-container">
-        <h2 class="section-title">🏆 ACHIEVEMENTS</h2>
-        <p class="achievements-subtitle">Celebrating milestones and continuous learning</p>
-
-      
-        <div class="achievements-stats">
-            <div class="stat-item">
-                <span class="stat-number">3</span>
-                <span class="stat-label">Hackathons Won</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">10+</span>
-                <span class="stat-label">Courses Completed</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">3</span>
-                <span class="stat-label">Projects Built</span>
-            </div>
-        </div>
-
-
-        <div class="achievement-tabs">
-            <button class="tab-btn active" data-category="all">
-                <i class="fas fa-trophy"></i>
-                All Achievements
-            </button>
-            <button class="tab-btn" data-category="hackathon">
-                <i class="fas fa-code"></i>
-                Hackathons
-            </button>
-            <button class="tab-btn" data-category="course">
-                <i class="fas fa-graduation-cap"></i>
-                Courses
-            </button>
-        </div>
-
-        <div class="achievements-grid">
-            
-            
-            <div class="achievement-card hackathon show" data-category="hackathon">
-                <div class="rank-badge first">
-                    <i class="fas fa-medal"></i>
-                    1st Place
-                </div>
-                <div class="achievement-icon">🏆</div>
-                <h3>Smart City Hackathon</h3>
-                <p class="event-name">TechFest 2024</p>
-                <p class="date">
-                    <i class="far fa-calendar-alt"></i>
-                    March 2024
-                </p>
-                <p class="description">
-                    Won first place for developing an IoT-based smart traffic management system that reduced congestion by 30% in simulations.
-                </p>
-                <div class="achievement-tags">
-                    <span class="achievement-tag">IoT</span>
-                    <span class="achievement-tag">Arduino</span>
-                    <span class="achievement-tag">Team Lead</span>
-                </div>
-            </div>
-
-          
-            <div class="achievement-card hackathon show" data-category="hackathon">
-                <div class="rank-badge winner">
-                    <i class="fas fa-trophy"></i>
-                    Winner
-                </div>
-                <div class="achievement-icon">🥇</div>
-                <h3>Web Development Challenge</h3>
-                <p class="event-name">CodeMasters Hackathon</p>
-                <p class="date">
-                    <i class="far fa-calendar-alt"></i>
-                    January 2024
-                </p>
-                <p class="description">
-                    Built a full-stack e-commerce platform in 24 hours with real-time inventory management and secure payment integration.
-                </p>
-                <div class="achievement-tags">
-                    <span class="achievement-tag">JavaScript</span>
-                    <span class="achievement-tag">Node.js</span>
-                    <span class="achievement-tag">24-Hour Challenge</span>
-                </div>
-            </div>
-
-            
-            <div class="achievement-card hackathon show" data-category="hackathon">
-                <div class="rank-badge second">
-                    <i class="fas fa-award"></i>
-                    2nd Place
-                </div>
-                <div class="achievement-icon">🥈</div>
-                <h3>Health Tech Innovation</h3>
-                <p class="event-name">MedHack 2023</p>
-                <p class="date">
-                    <i class="far fa-calendar-alt"></i>
-                    November 2023
-                </p>
-                <p class="description">
-                    Developed CareFlex - a post-pregnancy monitoring system using IoT sensors for real-time health tracking.
-                </p>
-                <div class="achievement-tags">
-                    <span class="achievement-tag">Healthcare</span>
-                    <span class="achievement-tag">IoT</span>
-                    <span class="achievement-tag">Innovation</span>
-                </div>
-            </div>
-
-            <div class="achievement-card course show" data-category="course">
-                <div class="achievement-icon">📚</div>
-                <h3>Full Stack Web Development</h3>
-                <div class="platform-badge">
-                    <i class="fas fa-laptop-code"></i>
-                    Udemy
-                </div>
-                <p class="date">
-                    <i class="far fa-calendar-alt"></i>
-                    Completed: February 2024
-                </p>
-                <p class="description">
-                    Comprehensive course covering HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB with hands-on projects.
-                </p>
-                <div class="achievement-tags">
-                    <span class="achievement-tag">MERN Stack</span>
-                    <span class="achievement-tag">40+ Hours</span>
-                    <span class="achievement-tag">Certified</span>
-                </div>
-            </div>
-
-        
-            <div class="achievement-card course show" data-category="course">
-                <div class="achievement-icon">🎓</div>
-                <h3>JavaScript Algorithms & Data Structures</h3>
-                <div class="platform-badge">
-                    <i class="fas fa-certificate"></i>
-                    freeCodeCamp
-                </div>
-                <p class="date">
-                    <i class="far fa-calendar-alt"></i>
-                    Completed: January 2024
-                </p>
-                <p class="description">
-                    Mastered core programming concepts including algorithms, data structures, and problem-solving techniques.
-                </p>
-                <div class="achievement-tags">
-                    <span class="achievement-tag">JavaScript</span>
-                    <span class="achievement-tag">DSA</span>
-                    <span class="achievement-tag">300+ Hours</span>
-                </div>
-            </div>
-
-           
-            <div class="achievement-card course show" data-category="course">
-                <div class="achievement-icon">💻</div>
-                <h3>Python for Data Science</h3>
-                <div class="platform-badge">
-                    <i class="fas fa-book"></i>
-                    Coursera
-                </div>
-                <p class="date">
-                    <i class="far fa-calendar-alt"></i>
-                    Completed: December 2023
-                </p>
-                <p class="description">
-                    Learned data analysis, visualization, and machine learning basics using Python, NumPy, Pandas, and Matplotlib.
-                </p>
-                <div class="achievement-tags">
-                    <span class="achievement-tag">Python</span>
-                    <span class="achievement-tag">Data Science</span>
-                    <span class="achievement-tag">IBM</span>
-                </div>
-            </div>
-
-            <div class="achievement-card course show" data-category="course">
-                <div class="achievement-icon">🔧</div>
-                <h3>Arduino & IoT Fundamentals</h3>
-                <div class="platform-badge">
-                    <i class="fas fa-microchip"></i>
-                    YouTube Learning
-                </div>
-                <p class="date">
-                    <i class="far fa-calendar-alt"></i>
-                    Completed: October 2023
-                </p>
-                <p class="description">
-                    Self-taught Arduino programming and IoT concepts through project-based learning and tutorials.
-                </p>
-                <div class="achievement-tags">
-                    <span class="achievement-tag">Arduino</span>
-                    <span class="achievement-tag">IoT</span>
-                    <span class="achievement-tag">Self-Learning</span>
-                </div>
-            </div>
-
-            
-            <div class="achievement-card course show" data-category="course">
-                <div class="achievement-icon">🎨</div>
-                <h3>Responsive Web Design</h3>
-                <div class="platform-badge">
-                    <i class="fas fa-code"></i>
-                    freeCodeCamp
-                </div>
-                <p class="date">
-                    <i class="far fa-calendar-alt"></i>
-                    Completed: September 2023
-                </p>
-                <p class="description">
-                    Built responsive websites using HTML5, CSS3, Flexbox, Grid, and modern design principles.
-                </p>
-                <div class="achievement-tags">
-                    <span class="achievement-tag">HTML/CSS</span>
-                    <span class="achievement-tag">Responsive</span>
-                    <span class="achievement-tag">Certified</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section> -->
-
 
         <!-- Skills Section -->
         <section id="skills" class="section skills">
@@ -1577,10 +541,6 @@
                         <i class="fas fa-th"></i>
                         All Projects
                     </button>
-                    <!-- <button class="filter-btn" data-filter="web">
-                        <i class="fas fa-globe"></i>
-                        Web Dev
-                    </button> -->
                     <button class="filter-btn" data-filter="iot">
                         <i class="fas fa-microchip"></i>
                         IoT & Arduino
@@ -1589,33 +549,27 @@
                         <i class="fas fa-desktop"></i>
                         Software
                     </button>
-                    <!-- <button class="filter-btn" data-filter="ai">
-                        <i class="fas fa-brain"></i>
-                        AI & ML
-                    </button> -->
                 </div>
                 
                 <div class="projects-grid">
-                    <!-- Project 1 -->
+                    <!-- Project 1: EconoTourist -->
                     <div class="project-card" data-category="software">
-                       <div class="project-image slideshow-container">
-        <!-- Slideshow images -->
-        <div class="mySlides fade">
-            <img src="image/econo-frontpage.png" alt="CareFlex Prototype 1" class="project-img">
-        </div>
-        <div class="mySlides fade">
-            <img src="image/econo-register.png" alt="CareFlex Prototype 2" class="project-img">
-        </div>
-        <div class="mySlides fade">
-            <img src="image/econo-hotels.png" alt="CareFlex Prototype 3" class="project-img">
-        </div>
-           <div class="mySlides fade">
-            <img src="image/econo-trip.png" alt="CareFlex Prototype 4" class="project-img">
-        </div>
-         <div class="mySlides fade">
-            <img src="image/econo-final.png" alt="CareFlex Prototype 4" class="project-img">
-        </div>
-
+                        <div class="project-image slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="image/econo-frontpage.png" alt="EconoTourist 1" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/econo-register.png" alt="EconoTourist 2" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/econo-hotels.png" alt="EconoTourist 3" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/econo-trip.png" alt="EconoTourist 4" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/econo-final.png" alt="EconoTourist 5" class="project-img">
+                            </div>
                             <div class="project-overlay">
                                 <span class="project-year">2022</span>
                             </div>
@@ -1654,96 +608,92 @@
                                     GitHub
                                 </a>
                             </div>
+                         
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
- <div class="project-card" data-category="iot">
-  <div class="project-image slideshow-container">
-        <!-- Slideshow images -->
-        <div class="mySlides fade">
-            <img src="image/careflex-belt.jpeg" alt="CareFlex Prototype 1" class="project-img">
-        </div>
-        <div class="mySlides fade">
-            <img src="image/careflex-frontpage.png" alt="CareFlex Prototype 2" class="project-img">
-        </div>
-        <div class="mySlides fade">
-            <img src="image/careflex-graph.png" alt="CareFlex Prototype 3" class="project-img">
-        </div>
-           <div class="mySlides fade">
-            <img src="image/careflex-logo.jpeg" alt="CareFlex Prototype 4" class="project-img">
-        </div>
+                    <!-- Project 2: CareFlex -->
+                    <div class="project-card" data-category="iot">
+                        <div class="project-image slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="image/careflex-belt.jpeg" alt="CareFlex 1" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/careflex-frontpage.png" alt="CareFlex 2" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/careflex-graph.png" alt="CareFlex 3" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/careflex-logo.jpeg" alt="CareFlex 4" class="project-img">
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-year">2025</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <div class="project-status status-completed">
+                                    <i class="fas fa-chart-line"></i>
+                                    Enhancing
+                                </div>
+                                <div class="project-duration">4 weeks</div>
+                            </div>
+                            <h3 class="project-title">
+                                <i class="fas fa-robot"></i>
+                                CareFlex - IOT based Post-Pregnancy Monitoring System
+                            </h3>
+                            <p class="project-description">
+                                An IoT-based health monitoring system using Arduino Cloud where data is shared wirelessly and insights are shown on a website. Various sensors track vital signs such as heart rate, temperature, and humidity. Data is transmitted to a cloud platform for real-time monitoring and alerts.
+                            </p>
+                            <div class="project-features">
+                                <span class="feature-item"><i class="fas fa-wifi"></i> IoT Connected</span>
+                                <span class="feature-item"><i class="fas fa-shield-alt"></i> Secure</span>
+                                <span class="feature-item"><i class="fas fa-chart-line"></i> Real-time</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Arduino</span>
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">IoT</span>
+                                <span class="tech-tag">Sensors</span>
+                                <span class="tech-tag">Cloud</span>
+                                <span class="tech-tag">Web Dev</span>
+                                <span class="tech-tag">Android Development</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                                <a href="https://careflex.vercel.app/" class="project-link live-link" target="_blank">
+                                    <i class="fas fa-eye"></i>
+                                    Live Site
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="project-overlay">
-            <span class="project-year">2025</span>
-        </div>
-    </div>
-
-    <div class="project-content">
-        <div class="project-header">
-            <div class="project-status status-completed">
-                <i class="fas fa-chart-line"></i>
-                Enhancing
-            </div>
-            <div class="project-duration">4 weeks</div>
-        </div>
-        <h3 class="project-title">
-            <i class="fas fa-robot"></i>
-            CareFlex - IOT based Post-Pregnancy Monitoring System
-        </h3>
-        <p class="project-description">
-            An IoT-based health monitoring system using Arduino Cloud where data is shared wirelessly and insights are shown on a website. Various sensors track vital signs such as heart rate, temperature, and humidity. Data is transmitted to a cloud platform for real-time monitoring and alerts.
-        </p>
-        <div class="project-features">
-            <span class="feature-item"><i class="fas fa-wifi"></i> IoT Connected</span>
-            <span class="feature-item"><i class="fas fa-shield-alt"></i> Secure</span>
-            <span class="feature-item"><i class="fas fa-chart-line"></i> Real-time</span>
-        </div>
-        <div class="project-tech">
-            <span class="tech-tag">Arduino</span>
-            <span class="tech-tag">C++</span>
-            <span class="tech-tag">IoT</span>
-            <span class="tech-tag">Sensors</span>
-            <span class="tech-tag">Cloud</span>
-            <span class="tech-tag">Web Dev</span>
-            <span class="tech-tag">Android Development</span>
-        </div>
-        <div class="project-links">
-            <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
-                <i class="fab fa-github"></i>
-                GitHub
-            </a>
-            <a href="https://careflex.vercel.app/" class="project-link live-link" target="_blank">
-                <i class="fas fa-eye"></i>
-                Live Site
-            </a>
-        </div>
-    </div>
-</div>
-
-
-                    <!-- Project 3 -->
-                     <div class="project-card" data-category="software">
-                       <div class="project-image slideshow-container">
-        <!-- Slideshow images -->
-        <div class="mySlides fade">
-            <img src="image/foodi-frontpage (1).png" alt="CareFlex Prototype 1" class="project-img">
-        </div>
-        <div class="mySlides fade">
-            <img src="image/foodi-About.png" alt="CareFlex Prototype 2" class="project-img">
-        </div>
-        <div class="mySlides fade">
-            <img src="image/foodi-find.png" alt="CareFlex Prototype 3" class="project-img">
-        </div>
-           <div class="mySlides fade">
-            <img src="image/foodi-fav.png" alt="CareFlex Prototype 4" class="project-img">
-        </div>
-        <div class="mySlides fade">
-            <img src="image/foodi-list.png" alt="CareFlex Prototype 3" class="project-img">
-        </div>
-           <div class="mySlides fade">
-            <img src="image/foodi-favdish.png" alt="CareFlex Prototype 4" class="project-img">
-        </div>
+                    <!-- Project 3: Foodi's -->
+                    <div class="project-card" data-category="software">
+                        <div class="project-image slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="image/foodi-frontpage (1).png" alt="Foodi 1" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/foodi-About.png" alt="Foodi 2" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/foodi-find.png" alt="Foodi 3" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/foodi-fav.png" alt="Foodi 4" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/foodi-list.png" alt="Foodi 5" class="project-img">
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="image/foodi-favdish.png" alt="Foodi 6" class="project-img">
+                            </div>
                             <div class="project-overlay">
                                 <span class="project-year">2024</span>
                             </div>
@@ -1761,9 +711,9 @@
                                 Foodi's (Recipe Finder)
                             </h3>
                             <p class="project-description">
-                            The Foodi’s is a web application designed to help users discover recipes based on the
-                            ingredients they have on hand. By inputting ingredients into a search form, users can
-                            fetch relevant recipe suggestions from the MealDB API.
+                                The Foodi's is a web application designed to help users discover recipes based on the
+                                ingredients they have on hand. By inputting ingredients into a search form, users can
+                                fetch relevant recipe suggestions from the MealDB API.
                             </p>
                             <div class="project-features">
                                 <span class="feature-item"><i class="fas fa-database"></i> User-Friendly</span>
@@ -1776,7 +726,6 @@
                                 <span class="tech-tag">JavaScript</span>
                                 <span class="tech-tag">Figma</span>
                                 <span class="tech-tag">API</span>
-
                             </div>
                             <div class="project-links">
                                 <a href="https://github.com/TejasD6504/Techplementinternship" class="project-link github-link" target="_blank">
@@ -1785,372 +734,14 @@
                                 </a>
                                 <a href="https://teamweb03.vercel.app/" class="project-link live-link" target="_blank">
                                     <i class="fas fa-eye"></i>
-                                   Live Site
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Project -4 -->
-                    
-                    <!--<div class="project-card" data-category="ai">
-                        <div class="project-image">
-                            <div class="project-placeholder">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <span class="project-year">2025</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <div class="project-status status-planned">
-                                    <i class="fas fa-lightbulb"></i>
-                                    Planned
-                                </div>
-                                <div class="project-duration">8 weeks</div>
-                            </div>
-                            <h3 class="project-title">
-                                <i class="fas fa-brain"></i>
-                                AI-Powered Study Assistant
-                            </h3>
-                            <p class="project-description">
-                                An intelligent study companion using Python and machine learning algorithms. Provides personalized study recommendations, progress tracking, and adaptive learning paths for students.
-                            </p>
-                            <div class="project-features">
-                                <span class="feature-item"><i class="fas fa-robot"></i> AI Powered</span>
-                                <span class="feature-item"><i class="fas fa-user-cog"></i> Personalized</span>
-                                <span class="feature-item"><i class="fas fa-chart-line"></i> Smart Analytics</span>
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Machine Learning</span>
-                                <span class="tech-tag">Flask</span>
-                                <span class="tech-tag">API Integration</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    GitHub
-                                </a>
-                                <a href="#" class="project-link live-link" style="opacity: 0.5; pointer-events: none;">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    Coming Soon
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card" data-category="web">
-                        <div class="project-image">
-                            <div class="project-placeholder">
-                                <i class="fas fa-gamepad"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <span class="project-year">2024</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <div class="project-status status-completed">
-                                    <i class="fas fa-check-circle"></i>
-                                    Completed
-                                </div>
-                                <div class="project-duration">2 weeks</div>
-                            </div>
-                            <h3 class="project-title">
-                                <i class="fas fa-puzzle-piece"></i>
-                                Interactive Web Game
-                            </h3>
-                            <p class="project-description">
-                                A browser-based puzzle game built with vanilla JavaScript. Features include multiple difficulty levels, high score tracking, responsive design, and smooth animations.
-                            </p>
-                            <div class="project-features">
-                                <span class="feature-item"><i class="fas fa-trophy"></i> High Scores</span>
-                                <span class="feature-item"><i class="fas fa-gamepad"></i> Interactive</span>
-                                <span class="feature-item"><i class="fas fa-star"></i> Multiple Levels</span>
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">HTML5 Canvas</span>
-                                <span class="tech-tag">CSS Animations</span>
-                                <span class="tech-tag">Local Storage</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    GitHub
-                                </a>
-                                <a href="#" class="project-link live-link" target="_blank">
-                                    <i class="fas fa-play"></i>
-                                    Play Game
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card" data-category="web">
-                        <div class="project-image">
-                            <div class="project-placeholder">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <span class="project-year">2024</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <div class="project-status status-in-progress">
-                                    <i class="fas fa-clock"></i>
-                                    In Progress
-                                </div>
-                                <div class="project-duration">3 weeks</div>
-                            </div>
-                            <h3 class="project-title">
-                                <i class="fas fa-calculator"></i>
-                                Scientific Calculator App
-                            </h3>
-                            <p class="project-description">
-                                A feature-rich calculator application with scientific functions, history tracking, and theme customization. Built with modern JavaScript and designed for both desktop and mobile use.
-                            </p>
-                            <div class="project-features">
-                                <span class="feature-item"><i class="fas fa-history"></i> History</span>
-                                <span class="feature-item"><i class="fas fa-palette"></i> Themes</span>
-                                <span class="feature-item"><i class="fas fa-function"></i> Scientific</span>
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">CSS Grid</span>
-                                <span class="tech-tag">PWA</span>
-                                <span class="tech-tag">Responsive</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/TejasD6504" class="project-link github-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    GitHub
-                                </a>
-                                <a href="#" class="project-link live-link" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Live App
+                                    Live Site
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </section>
-
-<!-- 
-  <section id="achievements">
-    <div class="achievements-container">
-        <h2 class="section-title">🏆 ACHIEVEMENTS</h2>
-        <p class="achievements-subtitle">Celebrating milestones and continuous learning</p>
-
-        <div class="achievements-grid">
-            
-        
-            <div class="achievement-card show" data-category="hackathon">
-                <div class="achievement-image">
-                    <div class="rank-badge first">
-                        <i class="fas fa-medal"></i>
-                        1st Place
-                    </div>
-                    <div class="achievement-slides">
-                        <div class="achievement-slide active">
-                            <img src="image/hackathon1-photo1.jpg" alt="Smart City Hackathon">
-                        </div>
-                        <div class="achievement-slide">
-                            <img src="image/hackathon1-photo2.jpg" alt="Team Photo">
-                        </div>
-                        <div class="achievement-slide">
-                            <img src="image/hackathon1-photo3.jpg" alt="Award Ceremony">
-                        </div>
-                    </div>
-                    <div class="slide-indicators">
-                        <span class="slide-dot active"></span>
-                        <span class="slide-dot"></span>
-                        <span class="slide-dot"></span>
-                    </div>
-                </div>
-                <div class="achievement-content">
-                    <div class="achievement-icon">🏆</div>
-                    <h3>Smart City Hackathon</h3>
-                    <p class="event-name">TechFest 2024</p>
-                    <p class="date">
-                        <i class="far fa-calendar-alt"></i>
-                        March 2024
-                    </p>
-                    <p class="description">
-                        Won first place for developing an IoT-based smart traffic management system that reduced congestion by 30% in simulations.
-                    </p>
-                    <div class="achievement-tags">
-                        <span class="achievement-tag">IoT</span>
-                        <span class="achievement-tag">Arduino</span>
-                        <span class="achievement-tag">Team Lead</span>
-                    </div>
-                </div>
-            </div>
-
-       
-            <div class="achievement-card show" data-category="hackathon">
-                <div class="achievement-image">
-                    <div class="rank-badge winner">
-                        <i class="fas fa-trophy"></i>
-                        Winner
-                    </div>
-                    <div class="achievement-placeholder">
-                        <i class="fas fa-code"></i>
-                    </div>
-                </div>
-                <div class="achievement-content">
-                    <div class="achievement-icon">🥇</div>
-                    <h3>Web Development Challenge</h3>
-                    <p class="event-name">CodeMasters Hackathon</p>
-                    <p class="date">
-                        <i class="far fa-calendar-alt"></i>
-                        January 2024
-                    </p>
-                    <p class="description">
-                        Built a full-stack e-commerce platform in 24 hours with real-time inventory management and secure payment integration.
-                    </p>
-                    <div class="achievement-tags">
-                        <span class="achievement-tag">JavaScript</span>
-                        <span class="achievement-tag">Node.js</span>
-                        <span class="achievement-tag">24-Hour Challenge</span>
-                    </div>
-                </div>
-            </div>
-
-          
-            <div class="achievement-card show" data-category="hackathon">
-                <div class="achievement-image">
-                    <div class="rank-badge second">
-                        <i class="fas fa-award"></i>
-                        2nd Place
-                    </div>
-                    <div class="achievement-slides">
-                        <div class="achievement-slide active">
-                            <img src="image/careflex-belt.jpeg" alt="CareFlex Project">
-                        </div>
-                        <div class="achievement-slide">
-                            <img src="image/careflex-logo.jpeg" alt="CareFlex Logo">
-                        </div>
-                    </div>
-                    <div class="slide-indicators">
-                        <span class="slide-dot active"></span>
-                        <span class="slide-dot"></span>
-                    </div>
-                </div>
-                <div class="achievement-content">
-                    <div class="achievement-icon">🥈</div>
-                    <h3>Health Tech Innovation</h3>
-                    <p class="event-name">MedHack 2023</p>
-                    <p class="date">
-                        <i class="far fa-calendar-alt"></i>
-                        November 2023
-                    </p>
-                    <p class="description">
-                        Developed CareFlex - a post-pregnancy monitoring system using IoT sensors for real-time health tracking.
-                    </p>
-                    <div class="achievement-tags">
-                        <span class="achievement-tag">Healthcare</span>
-                        <span class="achievement-tag">IoT</span>
-                        <span class="achievement-tag">Innovation</span>
-                    </div>
-                </div>
-            </div>
-
-         
-            <div class="achievement-card show" data-category="course">
-                <div class="achievement-image">
-                    <div class="achievement-placeholder">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                </div>
-                <div class="achievement-content">
-                    <div class="achievement-icon">📚</div>
-                    <h3>Full Stack Web Development</h3>
-                    <div class="platform-badge">
-                        <i class="fas fa-laptop-code"></i>
-                        Udemy
-                    </div>
-                    <p class="date">
-                        <i class="far fa-calendar-alt"></i>
-                        Completed: February 2024
-                    </p>
-                    <p class="description">
-                        Comprehensive course covering HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB with hands-on projects.
-                    </p>
-                    <div class="achievement-tags">
-                        <span class="achievement-tag">MERN Stack</span>
-                        <span class="achievement-tag">40+ Hours</span>
-                        <span class="achievement-tag">Certified</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="achievement-card show" data-category="course">
-                <div class="achievement-image">
-                    <div class="achievement-placeholder">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                </div>
-                <div class="achievement-content">
-                    <div class="achievement-icon">🎓</div>
-                    <h3>JavaScript Algorithms & Data Structures</h3>
-                    <div class="platform-badge">
-                        <i class="fas fa-certificate"></i>
-                        freeCodeCamp
-                    </div>
-                    <p class="date">
-                        <i class="far fa-calendar-alt"></i>
-                        Completed: January 2024
-                    </p>
-                    <p class="description">
-                        Mastered core programming concepts including algorithms, data structures, and problem-solving techniques.
-                    </p>
-                    <div class="achievement-tags">
-                        <span class="achievement-tag">JavaScript</span>
-                        <span class="achievement-tag">DSA</span>
-                        <span class="achievement-tag">300+ Hours</span>
-                    </div>
-                </div>
-            </div>
-=
-            <div class="achievement-card show" data-category="course">
-                <div class="achievement-image">
-                    <div class="achievement-placeholder">
-                        <i class="fab fa-python"></i>
-                    </div>
-                </div>
-                <div class="achievement-content">
-                    <div class="achievement-icon">💻</div>
-                    <h3>Python for Data Science</h3>
-                    <div class="platform-badge">
-                        <i class="fas fa-book"></i>
-                        Coursera
-                    </div>
-                    <p class="date">
-                        <i class="far fa-calendar-alt"></i>
-                        Completed: December 2023
-                    </p>
-                    <p class="description">
-                        Learned data analysis, visualization, and machine learning basics using Python, NumPy, Pandas, and Matplotlib.
-                    </p>
-                    <div class="achievement-tags">
-                        <span class="achievement-tag">Python</span>
-                        <span class="achievement-tag">Data Science</span>
-                        <span class="achievement-tag">IBM</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section> -->
-
 
         <!-- Contact Section -->
         <section id="contact" class="section contact">
@@ -2188,6 +779,26 @@
         </section>
     </div>
 
+    <!-- Awards Modal -->
+   <!-- DELETE THIS ENTIRE SECTION -->
+<div id="awardsModal" class="awards-modal">
+    <div class="awards-modal-content">
+        <div class="awards-modal-header">
+           <h3 class="awards-modal-title">
+               <i class="fas fa-trophy"></i>
+               <span id="awardTitle">Project Awards</span>
+           </h3>
+            <button class="awards-close-btn" onclick="closeAwardsModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul id="awardsList" class="awards-list"></ul>
+    </div>
+</div>
+<!-- END DELETE -->
+    </div>
+
+
       <script type="importmap">
 {
   "imports": {
@@ -2199,7 +810,296 @@
 
 <script type="module" src="./app.js"></script>
 
-    <script>
+   <script>
+// ==========================
+// Smooth Scrolling for Navigation
+// ==========================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// ==========================
+// Project Filtering System
+// ==========================
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filter === 'all' || category === filter) {
+                    card.classList.remove('hidden', 'filtering');
+                    card.classList.add('show');
+                } else {
+                    card.classList.add('filtering');
+                    setTimeout(() => {
+                        card.classList.add('hidden');
+                        card.classList.remove('filtering', 'show');
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+// ==========================
+// Animate on Scroll
+// ==========================
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.skill-card, .about-text-content, .contact-form, .project-card:not(.hidden), .edu-card, .achievement-card');
+    elements.forEach((element, index) => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < window.innerHeight - 150) {
+            if (element.classList.contains('project-card')) {
+                setTimeout(() => element.classList.add('fade-in'), (index % 6) * 100);
+            } else {
+                element.classList.add('fade-in');
+            }
+        }
+    });
+}
+
+// ==========================
+// Navigation Background on Scroll
+// ==========================
+function handleNavScroll() {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 100 ? 'rgba(0, 0, 0, 0.98)' : 'rgba(0, 0, 0, 0.95)';
+}
+
+// ==========================
+// Splash Screen
+// ==========================
+// window.addEventListener("load", () => {
+//     document.body.classList.add("no-scroll");
+//     setTimeout(() => {
+//         document.getElementById("splash").style.display = "none";
+//         document.body.classList.remove("no-scroll");
+//         initProjectFilters();
+//     }, 4800);
+// });
+
+// ==========================
+// Education Cards Animation
+// ==========================
+function animateEducationCards() {
+    document.querySelectorAll('.edu-card').forEach((card, index) => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < window.innerHeight - 150) {
+            setTimeout(() => card.classList.add('animate'), index * 200);
+        }
+    });
+}
+
+// ==========================
+// Achievements Section
+// ==========================
+function initAchievementTabs() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const achievementCards = document.querySelectorAll('.achievement-card');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.getAttribute('data-category');
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            achievementCards.forEach((card, index) => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'all' || cardCategory === category) {
+                    card.classList.remove('hidden');
+                    setTimeout(() => card.classList.add('show'), index * 100);
+                } else {
+                    card.classList.remove('show');
+                    setTimeout(() => card.classList.add('hidden'), 300);
+                }
+            });
+        });
+    });
+}
+
+function animateAchievements() {
+    const achievementCards = document.querySelectorAll('.achievement-card:not(.hidden)');
+    achievementCards.forEach((card, index) => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < window.innerHeight - 150) {
+            setTimeout(() => card.classList.add('show'), index * 100);
+        }
+    });
+}
+
+// ==========================
+// Counter Animation
+// ==========================
+function animateCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    statNumbers.forEach(stat => {
+        const target = stat.textContent;
+        const isPlus = target.includes('+');
+        const number = parseInt(target.replace('+', ''));
+        let current = 0;
+        const increment = number / 50;
+        const duration = 2000;
+        const stepTime = duration / 50;
+        const counter = setInterval(() => {
+            current += increment;
+            if (current >= number) {
+                stat.textContent = isPlus ? number + '+' : number;
+                clearInterval(counter);
+            } else {
+                stat.textContent = Math.floor(current);
+            }
+        }, stepTime);
+    });
+}
+
+function checkStatsAnimation() {
+    const statsSection = document.querySelector('.achievements-stats');
+    if (statsSection && !checkStatsAnimation.done) {
+        const rect = statsSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+            animateCounters();
+            checkStatsAnimation.done = true;
+        }
+    }
+}
+
+// ==========================
+// Quote Rotator
+// ==========================
+(function() {
+    const quotes = [
+        { text: "Code is like humor. When you have to explain it, it’s bad.", author: 'Cory House' },
+        { text: "First, solve the problem. Then, write the code.", author: 'John Johnson' },
+        { text: "Experience is the name everyone gives to their mistakes.", author: 'Oscar Wilde' },
+        { text: "Simplicity is the soul of efficiency.", author: 'Austin Freeman' },
+        { text: "Programs must be written for people to read, and only incidentally for machines to execute.", author: 'Harold Abelson' }
+    ];
+    
+    let currentQuote = 0;
+    const ROTATE_DELAY = 5000;
+    const quoteText = document.getElementById('quoteText');
+    const quoteAuthor = document.getElementById('quoteAuthor');
+    const prev = document.getElementById('prevQuote');
+    const next = document.getElementById('nextQuote');
+    const dotsContainer = document.getElementById('quoteDots');
+    if (!quoteText || !quoteAuthor || !dotsContainer) return;
+    
+    quotes.forEach((q, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => showQuote(i));
+        dotsContainer.appendChild(dot);
+    });
+    
+    function showQuote(index) {
+        currentQuote = (index + quotes.length) % quotes.length;
+        quoteText.style.opacity = 0;
+        quoteAuthor.style.opacity = 0;
+        setTimeout(() => {
+            quoteText.textContent = '"' + quotes[currentQuote].text + '"';
+            quoteAuthor.textContent = '— ' + quotes[currentQuote].author;
+            quoteText.style.opacity = 1;
+            quoteAuthor.style.opacity = 1;
+            updateDots();
+        }, 220);
+    }
+    function updateDots() {
+        dotsContainer.querySelectorAll('.quote-dot').forEach(dot => dot.classList.remove('active'));
+        dotsContainer.querySelector(`.quote-dot[data-index="${currentQuote}"]`)?.classList.add('active');
+    }
+    prev?.addEventListener('click', () => showQuote(currentQuote - 1));
+    next?.addEventListener('click', () => showQuote(currentQuote + 1));
+    showQuote(0);
+    setInterval(() => showQuote(currentQuote + 1), ROTATE_DELAY);
+})();
+
+// ==========================
+// Awards Modal
+// ==========================
+ function openAwardsModal(awards) {
+            const modal = document.getElementById('awardsModal');
+            const awardsList = document.getElementById('awardsList');
+            
+            // Clear previous awards
+            awardsList.innerHTML = '';
+            
+            // Add awards to list
+            awards.forEach((award, index) => {
+                const li = document.createElement('li');
+                li.className = 'award-item';
+                li.innerHTML = `
+                    <div class="award-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="award-text">${award}</div>
+                `;
+                awardsList.appendChild(li);
+            });
+            
+            // Show modal
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAwardsModal() {
+            const modal = document.getElementById('awardsModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // Initialize trophy buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const trophyButtons = document.querySelectorAll('.trophy-btn');
+            
+            trophyButtons.forEach(btn => {
+                const awards = JSON.parse(btn.getAttribute('data-awards'));
+                
+                // Add badge count if more than 1 award
+                if (awards.length > 1) {
+                    const badge = document.createElement('span');
+                    badge.className = 'awards-badge-count';
+                    badge.textContent = awards.length;
+                    btn.appendChild(badge);
+                }
+                
+                // Add click event
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openAwardsModal(awards);
+                });
+            });
+            
+            // Close modal when clicking outside
+            const modal = document.getElementById('awardsModal');
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeAwardsModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    closeAwardsModal();
+                }
+            });
+        });
+
         // Smooth Scrolling for Navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -2275,24 +1175,23 @@
             }
         }
 
-        // Splash screen
-        window.addEventListener("load", () => {
-            document.body.classList.add("no-scroll");
+        // // Splash screen
+        // window.addEventListener("load", () => {
+        //     document.body.classList.add("no-scroll");
 
-            setTimeout(() => {
-                document.getElementById("splash").style.display = "none";
-                document.body.classList.remove("no-scroll");
+        //     setTimeout(() => {
+        //         document.getElementById("splash").style.display = "none";
+        //         document.body.classList.remove("no-scroll");
                 
-                // Initialize project filters after splash
-                initProjectFilters();
-            }, 4800);
-        });
+        //         // Initialize project filters after splash
+        //         initProjectFilters();
+        //     }, 4800);
+        // });
 
         // Enhanced project interactions
         document.addEventListener('DOMContentLoaded', () => {
             const projectCards = document.querySelectorAll('.project-card');
             const projectLinks = document.querySelectorAll('.project-link');
-            const filterBtns = document.querySelectorAll('.filter-btn');
             
             // Project card hover effects
             projectCards.forEach(card => {
@@ -2327,907 +1226,107 @@
             // Animate on scroll
             window.addEventListener('scroll', animateOnScroll);
             animateOnScroll();
+            
             // Navigation background scroll effect
             window.addEventListener('scroll', handleNavScroll);
             handleNavScroll();
         });
 
-   // Select all slideshow containers
-document.querySelectorAll(".slideshow-container").forEach((container) => {
-    let slideIndex = 0;
-    const slides = container.querySelectorAll(".mySlides");
+        // Select all slideshow containers
+        document.querySelectorAll(".slideshow-container").forEach((container) => {
+            let slideIndex = 0;
+            const slides = container.querySelectorAll(".mySlides");
 
-    function showSlides() {
-        slides.forEach(slide => slide.style.display = "none"); // hide all
-        slideIndex++;
-        if (slideIndex > slides.length) slideIndex = 1;
-        slides[slideIndex - 1].style.display = "block"; // show current
-    }
-
-    // Start slideshow for this container
-    showSlides();
-    setInterval(showSlides, 3000); // change every 3s
-});
-
-
-// Enhanced Tic Tac Toe Game with AI - Replace the existing game code in your HTML
-
-const cells = document.querySelectorAll('[data-cell]');
-const board = document.getElementById('game-board');
-const winningMessage = document.getElementById('winning-message');
-const messageText = document.getElementById('message-text');
-const restartButton = document.getElementById('restartButton');
-
-const X_CLASS = 'x'; // Player
-const O_CLASS = 'o'; // Computer
-let oTurn;
-let winningCombination = null;
-let isGameActive = true;
-
-const WINNING_COMBINATIONS = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6]
-];
-
-startGame();
-
-restartButton.addEventListener('click', startGame);
-
-function startGame() {
-    oTurn = false;
-    winningCombination = null;
-    isGameActive = true;
-    cells.forEach(cell => {
-        cell.classList.remove(X_CLASS, O_CLASS, 'winner', 'pulse');
-        cell.textContent = '';
-        cell.removeEventListener('click', handleClick);
-        cell.addEventListener('click', handleClick, { once: true });
-    });
-    board.classList.remove('game-over');
-    winningMessage.classList.remove('show');
-    
-    // Remove any existing confetti
-    document.querySelectorAll('.confetti').forEach(c => c.remove());
-}
-
-function handleClick(e) {
-    if (!isGameActive || oTurn) return;
-    
-    const cell = e.target;
-    const currentClass = X_CLASS; // Player is always X
-    
-    placeMark(cell, currentClass);
-    
-    if (checkWin(currentClass)) {
-        endGame(false, 'Player');
-    } else if (isDraw()) {
-        endGame(true);
-    } else {
-        swapTurns();
-        // Computer's turn after a short delay
-        setTimeout(() => {
-            if (isGameActive) {
-                computerMove();
+            function showSlides() {
+                slides.forEach(slide => slide.style.display = "none");
+                slideIndex++;
+                if (slideIndex > slides.length) slideIndex = 1;
+                slides[slideIndex - 1].style.display = "block";
             }
-        }, 500);
-    }
-}
 
-function computerMove() {
-    if (!isGameActive) return;
-    
-    const bestMove = getBestMove();
-    if (bestMove !== null) {
-        const cell = cells[bestMove];
-        placeMark(cell, O_CLASS);
-        
-        if (checkWin(O_CLASS)) {
-            endGame(false, 'Computer');
-        } else if (isDraw()) {
-            endGame(true);
-        } else {
-            swapTurns();
-        }
-    }
-}
-
-function getBestMove() {
-    // Strategy: Try to win, block player, take center, take corner, take any
-    
-    // 1. Check if computer can win
-    for (let combo of WINNING_COMBINATIONS) {
-        const move = checkWinningMove(combo, O_CLASS);
-        if (move !== null) return move;
-    }
-    
-    // 2. Block player from winning
-    for (let combo of WINNING_COMBINATIONS) {
-        const move = checkWinningMove(combo, X_CLASS);
-        if (move !== null) return move;
-    }
-    
-    // 3. Take center if available
-    if (!cells[4].classList.contains(X_CLASS) && !cells[4].classList.contains(O_CLASS)) {
-        return 4;
-    }
-    
-    // 4. Take a corner
-    const corners = [0, 2, 6, 8];
-    const availableCorners = corners.filter(index => 
-        !cells[index].classList.contains(X_CLASS) && 
-        !cells[index].classList.contains(O_CLASS)
-    );
-    if (availableCorners.length > 0) {
-        return availableCorners[Math.floor(Math.random() * availableCorners.length)];
-    }
-    
-    // 5. Take any available space
-    const availableCells = [...cells].map((cell, index) => {
-        if (!cell.classList.contains(X_CLASS) && !cell.classList.contains(O_CLASS)) {
-            return index;
-        }
-        return null;
-    }).filter(index => index !== null);
-    
-    if (availableCells.length > 0) {
-        return availableCells[Math.floor(Math.random() * availableCells.length)];
-    }
-    
-    return null;
-}
-
-function checkWinningMove(combination, className) {
-    const positions = combination.map(index => {
-        if (cells[index].classList.contains(className)) return className;
-        if (cells[index].classList.contains(X_CLASS) || cells[index].classList.contains(O_CLASS)) return 'taken';
-        return index;
-    });
-    
-    const classCount = positions.filter(p => p === className).length;
-    const emptyIndex = positions.find(p => typeof p === 'number');
-    
-    if (classCount === 2 && emptyIndex !== undefined) {
-        return emptyIndex;
-    }
-    
-    return null;
-}
-
-function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass);
-    cell.textContent = currentClass.toUpperCase();
-    cell.removeEventListener('click', handleClick);
-}
-
-function swapTurns() {
-    oTurn = !oTurn;
-}
-
-function checkWin(currentClass) {
-    return WINNING_COMBINATIONS.some(combination => {
-        if (combination.every(index => cells[index].classList.contains(currentClass))) {
-            winningCombination = combination;
-            return true;
-        }
-        return false;
-    });
-}
-
-function endGame(draw, winner = null) {
-    isGameActive = false;
-    board.classList.add('game-over');
-    
-    if (draw) {
-        messageText.textContent = "It's a Draw! 🤝";
-        // Pulse all cells for a draw
-        cells.forEach((cell, i) => {
-            setTimeout(() => {
-                cell.classList.add('pulse');
-            }, i * 50);
+            showSlides();
+            setInterval(showSlides, 3000);
         });
-    } else {
-        if (winner === 'Player') {
-            messageText.textContent = `You Win! 🎉`;
-        } else {
-            messageText.textContent = `Computer Wins! 🤖`;
-        }
-        
-        // Highlight winning cells with staggered animation
-        if (winningCombination) {
-            winningCombination.forEach((index, i) => {
-                setTimeout(() => {
-                    cells[index].classList.add('winner');
-                    cells[index].classList.add('pulse');
-                }, i * 150);
-            });
-        }
-        
-        // Create confetti effect after a short delay (only if player wins)
-        if (winner === 'Player') {
-            setTimeout(() => {
-                createConfetti();
-            }, 450);
-        }
-    }
-    
-    // Show winning message with delay
-    setTimeout(() => {
-        winningMessage.classList.add('show');
-    }, 600);
-}
 
-function isDraw() {
-    return [...cells].every(cell => 
-        cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)
-    );
-}
-
-function createConfetti() {
-    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#ffa502', '#ff6348', '#f368e0', '#ffd700', '#00ff88'];
-    const confettiCount = 60;
-    const gameSection = document.getElementById('tictactoe');
-    
-    for (let i = 0; i < confettiCount; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        
-        // Random positioning and styling
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDelay = Math.random() * 0.5 + 's';
-        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        confetti.style.width = (Math.random() * 8 + 6) + 'px';
-        confetti.style.height = (Math.random() * 8 + 6) + 'px';
-        
-        gameSection.appendChild(confetti);
-        
-        // Remove confetti after animation
-        setTimeout(() => {
-            if (confetti.parentElement) {
-                confetti.remove();
-            }
-        }, 4000);
-    }
-
-
-
-function animateEducationCards() {
-    const eduCards = document.querySelectorAll('.edu-card');
-    
-    eduCards.forEach((card, index) => {
-        const cardTop = card.getBoundingClientRect().top;
-        const cardVisible = 150;
-        
-        if (cardTop < window.innerHeight - cardVisible) {
-            setTimeout(() => {
-                card.classList.add('animate');
-            }, index * 200); // Stagger animation
-        }
-    });
-}
-
-// Add to your existing DOMContentLoaded event or create a new one
+// ==========================
+// On DOMContentLoaded
+// ==========================
 document.addEventListener('DOMContentLoaded', () => {
-    // ... your existing code ...
+    // Initialize project hover effects
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', () => card.style.boxShadow = '0 8px 25px rgba(255,165,0,0.4)');
+        card.addEventListener('mouseleave', () => card.style.boxShadow = '0 4px 15px rgba(255,165,0,0.1)');
+    });
     
-    // Education timeline animation
-    window.addEventListener('scroll', animateEducationCards);
-    animateEducationCards(); // Check on load
-});
-
-}
-
-
-
-// Achievements Section JavaScript - Add to your existing script
-
-// Achievement Tabs Filtering
-function initAchievementTabs() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const achievementCards = document.querySelectorAll('.achievement-card');
-    
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const category = btn.getAttribute('data-category');
-            
-            // Update active tab
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Filter achievements with animation
-            achievementCards.forEach((card, index) => {
-                const cardCategory = card.getAttribute('data-category');
-                
-                if (category === 'all' || cardCategory === category) {
-                    card.classList.remove('hidden');
-                    setTimeout(() => {
-                        card.classList.add('show');
-                    }, index * 100);
-                } else {
-                    card.classList.remove('show');
-                    setTimeout(() => {
-                        card.classList.add('hidden');
-                    }, 300);
-                }
-            });
+    // Ripple effect on project links
+    document.querySelectorAll('.project-link').forEach(link => {
+        link.addEventListener('click', e => {
+            if (!link.href || link.href.endsWith('#')) e.preventDefault();
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            link.appendChild(ripple);
+            const rect = link.getBoundingClientRect();
+            ripple.style.left = `${e.clientX - rect.left}px`;
+            ripple.style.top = `${e.clientY - rect.top}px`;
+            setTimeout(() => ripple.remove(), 600);
         });
     });
-}
-
-// Animate achievements on scroll
-function animateAchievements() {
-    const achievementCards = document.querySelectorAll('.achievement-card:not(.hidden)');
     
-    achievementCards.forEach((card, index) => {
-        const cardTop = card.getBoundingClientRect().top;
-        const cardVisible = 150;
-        
-        if (cardTop < window.innerHeight - cardVisible) {
-            setTimeout(() => {
-                card.classList.add('show');
-            }, index * 100);
+    // Slideshow
+    document.querySelectorAll(".slideshow-container").forEach(container => {
+        let i = 0;
+        const slides = container.querySelectorAll(".mySlides");
+        function showSlides() {
+            slides.forEach(s => s.style.display = "none");
+            i = (i + 1 > slides.length) ? 1 : i + 1;
+            slides[i - 1].style.display = "block";
         }
+        showSlides();
+        setInterval(showSlides, 3000);
     });
-}
-
-// Counter animation for stats
-function animateCounters() {
-    const statNumbers = document.querySelectorAll('.stat-number');
     
-    statNumbers.forEach(stat => {
-        const target = stat.textContent;
-        const isPlus = target.includes('+');
-        const number = parseInt(target.replace('+', ''));
-        let current = 0;
-        const increment = number / 50;
-        const duration = 2000;
-        const stepTime = duration / 50;
-        
-        const counter = setInterval(() => {
-            current += increment;
-            if (current >= number) {
-                stat.textContent = isPlus ? number + '+' : number;
-                clearInterval(counter);
-            } else {
-                stat.textContent = Math.floor(current);
-            }
-        }, stepTime);
+    // Trophy Buttons
+    document.querySelectorAll('.trophy-btn').forEach(btn => {
+        const awards = JSON.parse(btn.getAttribute('data-awards'));
+        if (awards.length > 1) {
+            const badge = document.createElement('span');
+            badge.className = 'awards-badge-count';
+            badge.textContent = awards.length;
+            btn.appendChild(badge);
+        }
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            openAwardsModal(awards);
+        });
     });
-}
-
-// Check if element is in viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// Animate stats when section comes into view
-let statsAnimated = false;
-function checkStatsAnimation() {
-    const statsSection = document.querySelector('.achievements-stats');
-    if (statsSection && !statsAnimated && isInViewport(statsSection)) {
-        animateCounters();
-        statsAnimated = true;
-    }
-}
-
-// Add to your existing DOMContentLoaded event
-document.addEventListener('DOMContentLoaded', () => {
-    // ... your existing code ...
     
-    // Initialize achievement tabs
+    document.getElementById('awardsModal')?.addEventListener('click', e => {
+        if (e.target.id === 'awardsModal') closeAwardsModal();
+    });
+    
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeAwardsModal();
+    });
+
+    // Init Achievements & Animations
     initAchievementTabs();
-    
-    // Animate achievements on scroll
     window.addEventListener('scroll', () => {
+        animateOnScroll();
+        animateEducationCards();
         animateAchievements();
         checkStatsAnimation();
+        handleNavScroll();
     });
     
-    // Initial check
+    animateOnScroll();
+    animateEducationCards();
     animateAchievements();
     checkStatsAnimation();
+    handleNavScroll();
 });
+</script>
 
-// Optional: Add this to your existing animateOnScroll function
-// Just add '.achievement-card' to the selector:
-// const elements = document.querySelectorAll('.skill-card, .about-text-content, .contact-form, .project-card:not(.hidden), .edu-card, .achievement-card');
 
-// Quote rotation logic
-(function() {
-    const quotes = [
-        { text: "Code is like humor. When you have to explain it, it’s bad.", author: 'Cory House' },
-        { text: "First, solve the problem. Then, write the code.", author: 'John Johnson' },
-        { text: "Experience is the name everyone gives to their mistakes.", author: 'Oscar Wilde' },
-        { text: "Simplicity is the soul of efficiency.", author: 'Austin Freeman' },
-        { text: "Programs must be written for people to read, and only incidentally for machines to execute.", author: 'Harold Abelson' }
-    ];
-
-    let currentQuote = 0;
-    let autoRotateTimer = null;
-    const ROTATE_DELAY = 5000; // 5s
-
-    const quoteTextEl = document.getElementById('quoteText');
-    const quoteAuthorEl = document.getElementById('quoteAuthor');
-    const prevBtn = document.getElementById('prevQuote');
-    const nextBtn = document.getElementById('nextQuote');
-    const dotsContainer = document.getElementById('quoteDots');
-
-    if (!quoteTextEl || !quoteAuthorEl || !prevBtn || !nextBtn || !dotsContainer) return;
-
-    // create dots
-    quotes.forEach((q, i) => {
-        const d = document.createElement('div');
-        d.className = 'quote-dot' + (i === 0 ? ' active' : '');
-        d.dataset.index = i;
-        d.addEventListener('click', () => { showQuote(i); resetTimer(); });
-        dotsContainer.appendChild(d);
-    });
-
-    function updateDots() {
-        const dots = dotsContainer.querySelectorAll('.quote-dot');
-        dots.forEach(d => d.classList.remove('active'));
-        const active = dotsContainer.querySelector('.quote-dot[data-index="' + currentQuote + '"]');
-        if (active) active.classList.add('active');
-    }
-
-    function showQuote(index) {
-        currentQuote = (index + quotes.length) % quotes.length;
-        // gentle fade
-        quoteTextEl.style.opacity = 0;
-        quoteAuthorEl.style.opacity = 0;
-        setTimeout(() => {
-            quoteTextEl.textContent = '"' + quotes[currentQuote].text + '"';
-            quoteAuthorEl.textContent = '— ' + quotes[currentQuote].author;
-            quoteTextEl.style.opacity = 1;
-            quoteAuthorEl.style.opacity = 1;
-            updateDots();
-        }, 220);
-    }
-
-    function prevQuote() { showQuote(currentQuote - 1); }
-    function nextQuote() { showQuote(currentQuote + 1); }
-
-    prevBtn.addEventListener('click', () => { prevQuote(); resetTimer(); });
-    nextBtn.addEventListener('click', () => { nextQuote(); resetTimer(); });
-
-    function startTimer() {
-        autoRotateTimer = setInterval(() => { nextQuote(); }, ROTATE_DELAY);
-    }
-
-    function resetTimer() {
-        if (autoRotateTimer) clearInterval(autoRotateTimer);
-        startTimer();
-    }
-
-    // initialize
-    showQuote(0);
-    startTimer();
-})();
-
-    // ===== SPLASH SCREEN FUNCTIONALITY =====
-    (function initSplash() {
-        const languages = [
-            { text: 'Namaste',     label: 'English'  },
-            { text: 'नमस्ते',       label: 'Hindi'    },
-            { text: 'नमस्कार',      label: 'Marathi'  },
-            { text: 'வணக்கம்',     label: 'Tamil'    },
-            { text: 'నమస్తే',      label: 'Telugu'   },
-            { text: 'ನಮಸ್ಕಾರ',     label: 'Kannada'  },
-            { text: 'નમસ્તે',      label: 'Gujarati' },
-            { text: 'নমস্কার',     label: 'Bengali'  },
-        ];
-
-        let current = 0;
-        const langText = document.getElementById('langText');
-        const langLabel = document.getElementById('langLabel');
-        const splashOverlay = document.getElementById('splashOverlay');
-        const body = document.body;
-
-        // Add splash-active class to prevent scrolling during splash
-        body.classList.add('splash-active');
-
-        function nextLanguage() {
-            current = (current + 1) % languages.length;
-            const next = languages[current];
-
-            // Slide out
-            langText.classList.remove('slide-in');
-            langText.classList.add('slide-out');
-
-            setTimeout(() => {
-                langText.textContent = next.text;
-                langLabel.textContent = next.label;
-                langText.classList.remove('slide-out');
-                langText.classList.add('slide-in');
-            }, 260);
-        }
-
-        // Start cycling after initial display
-        setTimeout(() => {
-            setInterval(nextLanguage, 1400);
-        }, 1800);
-
-        // Hide splash screen and show main content
-        setTimeout(() => {
-            splashOverlay.classList.add('hidden');
-            // Remove overflow-hidden from body to enable scrolling
-            body.classList.remove('splash-active');
-            body.style.overflow = 'auto';
-            document.documentElement.style.overflow = 'auto';
-            setTimeout(() => {
-                splashOverlay.style.display = 'none';
-            }, 600);
-        }, 8500);
-    })();
-
-    // ===== CREATIVE CURSOR FUNCTIONALITY =====
-    (function initCursor() {
-        const cursorRing = document.getElementById('cursorRing');
-        const cursorRingInner = document.getElementById('cursorRingInner');
-        const cursorDot = document.getElementById('cursorDot');
-        const sparks = ['spark1', 'spark2', 'spark3', 'spark4', 'spark5', 'spark6'].map(id => document.getElementById(id));
-        
-        let mouseX = 0, mouseY = 0;
-        let ringX = 0, ringY = 0;
-        let ringInnerX = 0, ringInnerY = 0;
-        let sparkPositions = [];
-        let lastMouseX = 0, lastMouseY = 0;
-        let velocity = 0;
-
-        // Initialize spark positions
-        sparks.forEach(() => sparkPositions.push({ x: 0, y: 0, angle: Math.random() * Math.PI * 2 }));
-
-        document.addEventListener('mousemove', (e) => {
-            // Calculate velocity
-            velocity = Math.sqrt(Math.pow(e.clientX - lastMouseX, 2) + Math.pow(e.clientY - lastMouseY, 2));
-            lastMouseX = mouseX;
-            lastMouseY = mouseY;
-            
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            // Dot follows instantly
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-
-            // Create spark effect on fast movement
-            if (velocity > 15) {
-                createSpark();
-            }
-        });
-
-        function createSpark() {
-            sparks.forEach((spark, i) => {
-                const angle = (Math.PI * 2 / sparks.length) * i + Math.random() * 0.5;
-                const distance = 20 + Math.random() * 30;
-                const sparkX = mouseX + Math.cos(angle) * distance;
-                const sparkY = mouseY + Math.sin(angle) * distance;
-                
-                spark.style.left = sparkX + 'px';
-                spark.style.top = sparkY + 'px';
-                spark.style.opacity = '1';
-                spark.style.transform = `translate(-50%, -50%) scale(${0.5 + Math.random() * 0.5})`;
-                
-                setTimeout(() => {
-                    spark.style.opacity = '0';
-                    spark.style.transform = 'translate(-50%, -50%) scale(0)';
-                }, 100 + i * 50);
-            });
-        }
-
-        function animateCursor() {
-            // Ring follows with smooth delay
-            ringX += (mouseX - ringX) * 0.1;
-            ringY += (mouseY - ringY) * 0.1;
-            cursorRing.style.left = ringX + 'px';
-            cursorRing.style.top = ringY + 'px';
-
-            // Inner ring follows slightly faster
-            ringInnerX += (mouseX - ringInnerX) * 0.15;
-            ringInnerY += (mouseY - ringInnerY) * 0.15;
-            cursorRingInner.style.left = ringInnerX + 'px';
-            cursorRingInner.style.top = ringInnerY + 'px';
-
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Hover effect on clickable elements
-        const hoverElements = document.querySelectorAll('a, button, .clickable, input, textarea, select, .social-link, .nav-links a, .quote-btn, .project-card, .skill-card, .filter-btn');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorRing.classList.add('hover');
-                cursorRingInner.classList.add('hover');
-                cursorDot.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorRing.classList.remove('hover');
-                cursorRingInner.classList.remove('hover');
-                cursorDot.classList.remove('hover');
-            });
-        });
-
-        // Click effect with spark burst
-        document.addEventListener('mousedown', () => {
-            cursorRing.classList.add('click');
-            cursorRingInner.classList.add('click');
-            cursorDot.classList.add('click');
-            createSpark();
-        });
-        document.addEventListener('mouseup', () => {
-            cursorRing.classList.remove('click');
-            cursorRingInner.classList.remove('click');
-            cursorDot.classList.remove('click');
-        });
-
-        // Hide cursor when leaving window
-        document.addEventListener('mouseleave', () => {
-            cursorRing.style.opacity = '0';
-            cursorRingInner.style.opacity = '0';
-            cursorDot.style.opacity = '0';
-        });
-        document.addEventListener('mouseenter', () => {
-            cursorRing.style.opacity = '1';
-            cursorRingInner.style.opacity = '1';
-            cursorDot.style.opacity = '1';
-        });
-    })();
-
-    // ===== SCROLL PROGRESS BAR =====
-    (function initScrollProgress() {
-        const scrollProgress = document.getElementById('scrollProgress');
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
-            scrollProgress.style.width = progress + '%';
-        });
-    })();
-
-    // ===== SCROLL REVEAL ANIMATIONS =====
-    (function initScrollReveal() {
-        // Add reveal classes to elements
-        const sections = document.querySelectorAll('.section-title');
-        sections.forEach(el => el.classList.add('reveal'));
-
-        const cards = document.querySelectorAll('.skill-card, .project-card, .edu-card, .achievement-card');
-        cards.forEach((el, i) => {
-            el.classList.add('reveal');
-            el.style.transitionDelay = (i % 4) * 0.1 + 's';
-        });
-
-        const aboutContent = document.querySelectorAll('.about-text-content, .about-image');
-        aboutContent.forEach(el => el.classList.add('reveal'));
-
-        function checkReveal() {
-            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-            const windowHeight = window.innerHeight;
-            const revealPoint = 100;
-
-            reveals.forEach(el => {
-                const top = el.getBoundingClientRect().top;
-                if (top < windowHeight - revealPoint) {
-                    el.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checkReveal);
-        window.addEventListener('load', checkReveal);
-        checkReveal();
-    })();
-
-    // ===== FLOATING PARTICLES =====
-    (function initParticles() {
-        const hero = document.querySelector('.hero');
-        if (!hero) return;
-
-        // Create particles container
-        let container = hero.querySelector('.particles-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.className = 'particles-container';
-            hero.insertBefore(container, hero.firstChild);
-        }
-
-        // Create particles
-        for (let i = 0; i < 20; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-            particle.style.width = (2 + Math.random() * 4) + 'px';
-            particle.style.height = particle.style.width;
-            container.appendChild(particle);
-        }
-    })();
-
-    // ===== MAGNETIC BUTTONS =====
-    (function initMagneticButtons() {
-        const magneticElements = document.querySelectorAll('.social-link, .submit-btn, .filter-btn');
-        
-        magneticElements.forEach(el => {
-            el.classList.add('magnetic');
-            
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                el.style.transform = 'translate(0, 0)';
-            });
-        });
-    })();
-
-    // ===== TYPED TEXT EFFECT =====
-    (function initTypedText() {
-        const nameElement = document.querySelector('.hero-text .name');
-        if (!nameElement) return;
-
-        const originalText = nameElement.textContent;
-        nameElement.textContent = '';
-        nameElement.classList.add('typed-text');
-
-        let charIndex = 0;
-        function typeChar() {
-            if (charIndex < originalText.length) {
-                nameElement.textContent += originalText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeChar, 100);
-            } else {
-                // Remove cursor after typing
-                setTimeout(() => {
-                    nameElement.classList.remove('typed-text');
-                }, 1000);
-            }
-        }
-
-        // Start typing after splash screen
-        setTimeout(typeChar, 9000);
-    })();
-
-    // ===== RIPPLE EFFECT ON BUTTONS =====
-    (function initRipple() {
-        const buttons = document.querySelectorAll('.submit-btn, .filter-btn, .quote-btn');
-        
-        buttons.forEach(btn => {
-            btn.classList.add('ripple');
-            
-            btn.addEventListener('click', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const ripple = document.createElement('span');
-                ripple.className = 'ripple-effect';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-    })();
-
-    // ===== NAVBAR SCROLL EFFECT =====
-    (function initNavbarScroll() {
-        const nav = document.querySelector('nav');
-        if (!nav) return;
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    })();
-
-    // ===== TILT EFFECT ON CARDS =====
-    (function initTiltCards() {
-        const cards = document.querySelectorAll('.project-card, .edu-card');
-        
-        cards.forEach(card => {
-            card.classList.add('tilt-card');
-            
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                
-                card.style.setProperty('--rotateX', rotateX + 'deg');
-                card.style.setProperty('--rotateY', rotateY + 'deg');
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.setProperty('--rotateX', '0deg');
-                card.style.setProperty('--rotateY', '0deg');
-            });
-        });
-    })();
-
-    // ===== SMOOTH SCROLL FOR NAV LINKS =====
-    (function initSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    })();
-
-    // ===== ACTIVE SECTION HIGHLIGHT =====
-    (function initActiveSection() {
-        const sections = document.querySelectorAll('.section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        function updateActiveSection() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveSection);
-    })();
-
-    // ===== PARALLAX EFFECT ON HERO =====
-    (function initParallax() {
-        const hero = document.querySelector('.hero');
-        if (!hero) return;
-
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            if (scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
-            }
-        });
-    })();
-
-    </script>
 
 </body>
 </html>
