@@ -1,7 +1,7 @@
  Host : "smtp.gmail.com",
-    Username : "tejaldeshmukh9507@gmail.com",
-    Password : "***REMOVED***",
-    To : 'tejasdeshmukh320@gmail.com',
+    Username : "",
+    Password : "=",
+    To : '',
     From : document.getElementById("email1").value,
     Subject : document.getElementById("subject1").value,
     Body : "Name : "+document.getElementById("name1").value+ "<br>Email: " + document.getElementById("email1").value+  "Name : "+document.getElementById("name1").value+ "<br>Message: " + document.getElementById("message1").value
